@@ -1,0 +1,74 @@
+[
+  {
+    "doc_id": "aurora",
+    "title": "Project Aurora handbook",
+    "text": "Project Aurora is led by Dr. Maya Chen. The team meets on Tuesdays.",
+    "answer": "Dr. Maya Chen"
+  },
+  {
+    "doc_id": "orion",
+    "title": "Orion service objectives",
+    "text": "The Orion protocol has a target end-to-end latency of 120 milliseconds.",
+    "answer": "120 milliseconds"
+  },
+  {
+    "doc_id": "borealis",
+    "title": "Borealis launch plan",
+    "text": "The planned Borealis launch date is September 14, 2027.",
+    "answer": "September 14, 2027"
+  },
+  {
+    "doc_id": "cedar",
+    "title": "Cedar returns policy",
+    "text": "Cedar customers may request a refund within 45 days of purchase.",
+    "answer": "45 days"
+  },
+  {
+    "doc_id": "atlas",
+    "title": "Atlas device specification",
+    "text": "The Atlas field unit is rated for 18 hours of battery life.",
+    "answer": "18 hours"
+  },
+  {
+    "doc_id": "helios",
+    "title": "Helios office directory",
+    "text": "The Helios operations office is in Albany, New York.",
+    "answer": "Albany, New York"
+  },
+  {
+    "doc_id": "meridian",
+    "title": "Meridian engineering notes",
+    "text": "The current Meridian deployment uses PostgreSQL 16.",
+    "answer": "PostgreSQL 16"
+  },
+  {
+    "doc_id": "nimbus",
+    "title": "Nimbus data policy",
+    "text": "Nimbus keeps application logs for 30 days before automatic deletion.",
+    "answer": "30 days"
+  },
+  {
+    "doc_id": "solstice",
+    "title": "Solstice brand guide",
+    "text": "The primary Solstice status color is amber.",
+    "answer": "amber"
+  },
+  {
+    "doc_id": "lumen",
+    "title": "Lumen upload limits",
+    "text": "Lumen accepts individual file uploads up to 250 MB.",
+    "answer": "250 MB"
+  },
+  {
+    "doc_id": "vega",
+    "title": "Vega incident guide",
+    "text": "The emergency coordination channel for Vega is #vega-ops.",
+    "answer": "#vega-ops"
+  },
+  {
+    "doc_id": "quartz",
+    "title": "Quartz warranty terms",
+    "text": "Quartz hardware includes a three-year limited warranty.",
+    "answer": "3 years"
+  }
+]

@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "adaptive-hitl-agent"
+version = "0.1.0"
+description = "A resource-aware LLM agent that learns when to answer, retrieve, use a tool, or ask a human."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Hadis ArefanJazi" }]
+dependencies = [
+  "torch>=2.1",
+  "transformers>=4.40",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0",
+  "pytest-cov>=5.0",
+]
+
+[project.scripts]
+adaptive-hitl = "adaptive_hitl_agent.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["adaptive_hitl_agent*"]
+
+[tool.setuptools.package-data]
+"adaptive_hitl_agent.data" = ["*.json", "*.jsonl"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
+
+[tool.coverage.run]
+source = ["adaptive_hitl_agent"]

@@ -1,0 +1,81 @@
+{
+  "run": {
+    "command": "python -m adaptive_hitl_agent experiment --episodes 600 --seed 7",
+    "training_episodes": 600,
+    "training_tasks": 20,
+    "test_tasks": 12,
+    "seed": 7
+  },
+  "metrics": {
+    "adaptive_rl": {
+      "task_success": 1.0,
+      "factuality": 1.0,
+      "average_reward": 0.7878333333333333,
+      "average_tokens": 14.833333333333334,
+      "average_retrieval_calls": 0.25,
+      "average_tool_calls": 0.25,
+      "average_latency": 2.0,
+      "intervention_frequency": 0.25,
+      "average_steps": 1.5
+    },
+    "fixed_rag": {
+      "task_success": 0.5,
+      "factuality": 1.0,
+      "average_reward": 0.30516666666666675,
+      "average_tokens": 17.416666666666668,
+      "average_retrieval_calls": 0.25,
+      "average_tool_calls": 0.0,
+      "average_latency": 0.75,
+      "intervention_frequency": 0.0,
+      "average_steps": 1.25
+    },
+    "always_retrieve": {
+      "task_success": 0.5,
+      "factuality": 1.0,
+      "average_reward": 0.19266666666666662,
+      "average_tokens": 36.166666666666664,
+      "average_retrieval_calls": 1.0,
+      "average_tool_calls": 0.0,
+      "average_latency": 1.5,
+      "intervention_frequency": 0.0,
+      "average_steps": 2.0
+    },
+    "heuristic_router": {
+      "task_success": 1.0,
+      "factuality": 1.0,
+      "average_reward": 0.7878333333333333,
+      "average_tokens": 14.833333333333334,
+      "average_retrieval_calls": 0.25,
+      "average_tool_calls": 0.25,
+      "average_latency": 2.0,
+      "intervention_frequency": 0.25,
+      "average_steps": 1.5
+    },
+    "no_human": {
+      "task_success": 0.75,
+      "factuality": 1.0,
+      "average_reward": 0.5531666666666667,
+      "average_tokens": 24.666666666666668,
+      "average_retrieval_calls": 0.5,
+      "average_tool_calls": 0.5,
+      "average_latency": 1.25,
+      "intervention_frequency": 0.0,
+      "average_steps": 2.0
+    },
+    "direct_only": {
+      "task_success": 0.25,
+      "factuality": 1.0,
+      "average_reward": 0.027666666666666676,
+      "average_tokens": 12.416666666666666,
+      "average_retrieval_calls": 0.0,
+      "average_tool_calls": 0.0,
+      "average_latency": 0.5,
+      "intervention_frequency": 0.0,
+      "average_steps": 1.0
+    }
+  },
+  "training": {
+    "mean_last_50_reward": 0.7876400000000001,
+    "final_loss": 0.000019733768567675725
+  }
+}
