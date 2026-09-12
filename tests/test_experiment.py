@@ -65,3 +65,23 @@ def test_seed7_benchmark_is_reproducible() -> None:
     assert adaptive.system_success == 1.0
     assert adaptive.autonomous_success == 0.75
     assert adaptive.intervention_frequency == 0.25
+
+
+def test_bundled_dataset_is_balanced_and_held_out() -> None:
+    from collections import Counter
+
+    tasks = load_tasks()
+    assert len({task.task_id for task in tasks}) == len(tasks)
+    assert len({task.question.casefold().strip() for task in tasks}) == len(tasks)
+    for split, expected in (("train", 5), ("test", 3)):
+        assert Counter(task.category for task in tasks if task.split == split) == {
+            route: expected for route in ("direct", "retrieve", "tool", "human")
+        }
+
+
+def test_experiment_records_runtime_and_data_provenance() -> None:
+    result = run_experiment(ExperimentConfig(training_episodes=1))
+    assert result.metadata["package_version"] == "0.2.0"
+    assert result.metadata["platform"]
+    assert result.metadata["training_device"] == "cpu"
+    assert all(len(value) == 64 for value in result.metadata["data_sha256"].values())

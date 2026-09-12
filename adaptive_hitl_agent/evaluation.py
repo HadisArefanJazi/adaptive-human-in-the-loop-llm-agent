@@ -13,6 +13,15 @@ ABSTENTION_ANSWERS = {
 }
 
 
+def is_autonomous_answer(answer: str | None, human_intervention: bool) -> bool:
+    """Whether a final response is a substantive answer without human review."""
+    return (
+        not human_intervention
+        and answer is not None
+        and normalize_answer(answer) not in ABSTENTION_ANSWERS
+    )
+
+
 @dataclass(frozen=True)
 class PolicyMetrics:
     system_success: float
@@ -80,8 +89,7 @@ def evaluate_policy(
     autonomous_answers = [
         trace
         for trace in traces
-        if not bool(trace["human_intervention"])
-        and normalize_answer(str(trace["answer"])) not in ABSTENTION_ANSWERS
+        if is_autonomous_answer(trace["answer"], bool(trace["human_intervention"]))
     ]
     autonomous_answer_precision = (
         sum(bool(trace["correct"]) for trace in autonomous_answers)

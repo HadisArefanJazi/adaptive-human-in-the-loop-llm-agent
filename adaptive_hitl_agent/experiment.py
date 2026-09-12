@@ -3,6 +3,7 @@ from __future__ import annotations
 import hashlib
 import json
 import platform
+from importlib.metadata import version
 
 import torch
 from dataclasses import asdict, dataclass
@@ -142,6 +143,10 @@ def run_experiment(
         traces=tuple(all_traces),
         training=training,
         metadata={
+            "package_version": version("adaptive-hitl-agent"),
+            "platform": platform.platform(),
+            "machine": platform.machine(),
+            "training_device": "cpu",
             "python_version": platform.python_version(),
             "torch_version": str(torch.__version__),
             "language_model": type(components.language_model).__name__,

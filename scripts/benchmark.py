@@ -14,6 +14,10 @@ from adaptive_hitl_agent.experiment import ExperimentConfig, run_experiment
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--seeds", type=int, nargs="+", default=[1, 3, 5, 7, 11, 13, 17, 19])
+    parser.add_argument(
+        "--reference-seed", type=int, default=7,
+        help="Seed whose full metrics are also exported (default: 7, if included).",
+    )
     parser.add_argument("--episodes", type=int, default=600)
     parser.add_argument("--output-dir", type=Path, default=Path("results"))
     parser.add_argument("--artifacts-dir", type=Path, default=Path("artifacts/benchmark"))
@@ -34,8 +38,8 @@ def main() -> None:
         )
         runs[str(seed)] = {name: asdict(metrics) for name, metrics in result.metrics.items()}
         metadata = result.metadata
-        if seed == 7:
-            shutil.copyfile(artifact_dir / "metrics.json", args.output_dir / "benchmark_seed7.json")
+        if seed == args.reference_seed:
+            shutil.copyfile(artifact_dir / "metrics.json", args.output_dir / f"benchmark_seed{seed}.json")
         print(f"seed {seed}: system success={result.metrics['adaptive_rl'].system_success:.1%}")
 
     first = runs[str(args.seeds[0])]
@@ -52,6 +56,7 @@ def main() -> None:
     payload = {
         "seeds": args.seeds,
         "training_episodes": args.episodes,
+        "reference_seed": args.reference_seed if args.reference_seed in args.seeds else None,
         "metadata": metadata,
         "summary": summary,
         "runs": runs,
