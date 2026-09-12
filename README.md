@@ -14,6 +14,7 @@ Python 3.10 or newer is required.
 python -m venv .venv
 source .venv/bin/activate
 python -m pip install -e ".[dev]"
+python -m ruff check .
 python -m pytest --cov=adaptive_hitl_agent --cov-report=term-missing --cov-fail-under=90
 python -m adaptive_hitl_agent experiment --episodes 600 --seed 7
 ```
@@ -81,7 +82,7 @@ Reproduce both result files with:
 python scripts/benchmark.py
 ```
 
-This writes per-seed traces and checkpoints under `artifacts/benchmark/`, plus [`results/benchmark_seed7.json`](results/benchmark_seed7.json) and [`results/benchmark_multiseed.json`](results/benchmark_multiseed.json). No best-seed selection is performed. Floating-point training details can vary with PyTorch versions and hardware.
+This writes per-seed traces and checkpoints under `artifacts/benchmark/`, plus [`results/benchmark_seed7.json`](results/benchmark_seed7.json) and [`results/benchmark_multiseed.json`](results/benchmark_multiseed.json). The additional full-metrics export defaults to seed 7 when included; use `--reference-seed N` to select another included seed. This controls the export only, not which runs enter the aggregate. No best-seed selection is performed. Floating-point training details can vary with PyTorch versions and hardware.
 
 ## Code layout
 

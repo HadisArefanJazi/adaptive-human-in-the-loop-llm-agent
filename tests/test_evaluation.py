@@ -108,3 +108,13 @@ def test_wrong_autonomous_answer_is_in_precision_denominator() -> None:
     assert metrics.autonomous_answer_coverage == 1
     assert metrics.autonomous_answer_precision == 0
     assert metrics.system_success == 0
+
+
+@pytest.mark.parametrize(("answer", "human", "expected"), [
+    (None, False, False), ("I don't know.", False, False),
+    ("Paris", True, False), ("Paris", False, True),
+])
+def test_autonomous_answer_classification(answer, human, expected) -> None:
+    from adaptive_hitl_agent.evaluation import is_autonomous_answer
+
+    assert is_autonomous_answer(answer, human) is expected

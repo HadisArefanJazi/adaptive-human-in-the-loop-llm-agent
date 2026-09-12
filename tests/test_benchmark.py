@@ -31,3 +31,18 @@ def test_benchmark_rejects_repeated_seeds(tmp_path) -> None:
     )
     assert result.returncode == 2
     assert "seeds must be distinct" in result.stderr
+
+
+def test_reference_seed_is_configurable(tmp_path) -> None:
+    subprocess.run(
+        [sys.executable, str(SCRIPT), "--episodes", "1", "--seeds", "3",
+         "--reference-seed", "3", "--output-dir", str(tmp_path / "results"),
+         "--artifacts-dir", str(tmp_path / "artifacts")],
+        check=True, capture_output=True, text=True,
+    )
+    output = tmp_path / "results"
+    assert (output / "benchmark_seed3.json").exists()
+    assert not (output / "benchmark_seed7.json").exists()
+    payload = json.loads((output / "benchmark_multiseed.json").read_text())
+    assert payload["reference_seed"] == 3
+    assert payload["summary"]["adaptive_rl"]["average_reward"]["sample_std"] == 0
