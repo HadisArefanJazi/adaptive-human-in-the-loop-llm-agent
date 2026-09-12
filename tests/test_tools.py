@@ -61,3 +61,11 @@ def test_calculator_does_not_evaluate_fragments_of_unsupported_input(question) -
 
 def test_calculator_accepts_a_complete_bare_expression() -> None:
     assert SafeCalculator().calculate(" (2 + 3) * 4 ") == "20"
+
+
+@pytest.mark.parametrize(("question", "expected"), [
+    ("Calculate 123456789 + 0.1", "123456789.1"),
+    ("Calculate 1 / 3", "0.3333333333333333"),
+])
+def test_calculator_preserves_float_precision_in_output(question, expected) -> None:
+    assert SafeCalculator().calculate(question) == expected

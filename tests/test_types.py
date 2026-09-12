@@ -25,3 +25,19 @@ def test_task_requires_valid_answers_and_split() -> None:
         with pytest.raises(ValueError):
             Task.from_dict({**payload, **change})
     assert normalize_answer("  Albany, New York. ") == "albany new york"
+
+
+@pytest.mark.parametrize("change", [
+    {"answer": None}, {"answer": 42}, {"acceptable_answers": None},
+    {"acceptable_answers": [None]}, {"id": None}, {"question": 123},
+    {"category": None},
+])
+def test_task_loader_rejects_invalid_values_instead_of_stringifying(change) -> None:
+    payload = dict(id="case", question="Question?", answer="yes", split="test", category="direct")
+    with pytest.raises(ValueError):
+        Task.from_dict({**payload, **change})
+
+
+def test_task_constructor_rejects_string_answer_container() -> None:
+    with pytest.raises(ValueError):
+        Task("case", "Question?", "yes", "test", "direct")

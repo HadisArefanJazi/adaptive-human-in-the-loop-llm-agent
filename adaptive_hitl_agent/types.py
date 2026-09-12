@@ -24,32 +24,36 @@ class Task:
     category: str
 
     def __post_init__(self) -> None:
-        if not self.task_id.strip() or not self.question.strip():
-            raise ValueError("Task id and question must be non-empty")
-        if not self.acceptable_answers or any(
-            not isinstance(answer, str) or not answer.strip()
-            for answer in self.acceptable_answers
+        for name in ("task_id", "question", "category"):
+            value = getattr(self, name)
+            if not isinstance(value, str) or not value.strip():
+                raise ValueError(f"Task {name} must be a non-empty string")
+        if (
+            not isinstance(self.acceptable_answers, tuple)
+            or not self.acceptable_answers
+            or any(
+                not isinstance(answer, str) or not answer.strip()
+                for answer in self.acceptable_answers
+            )
         ):
-            raise ValueError("A task needs at least one non-empty reference answer")
-        if self.split not in {"train", "test"}:
+            raise ValueError("A task needs a tuple of non-empty reference strings")
+        if self.split not in ("train", "test"):
             raise ValueError("Task split must be 'train' or 'test'")
-        if not self.category.strip():
-            raise ValueError("Task category must be non-empty")
 
     @classmethod
     def from_dict(cls, payload: dict[str, Any]) -> "Task":
         answers = payload.get("acceptable_answers")
-        if answers is None:
+        if "acceptable_answers" not in payload:
             answers = [payload["answer"]]
         if not isinstance(answers, (list, tuple)):
             raise ValueError("acceptable_answers must be a list of answers")
 
         return cls(
-            task_id=str(payload["id"]),
-            question=str(payload["question"]),
-            acceptable_answers=tuple(str(answer) for answer in answers),
-            split=str(payload["split"]),
-            category=str(payload["category"]),
+            task_id=payload["id"],
+            question=payload["question"],
+            acceptable_answers=tuple(answers),
+            split=payload["split"],
+            category=payload["category"],
         )
 
     @property

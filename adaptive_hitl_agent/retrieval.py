@@ -99,11 +99,11 @@ class BM25Retriever:
         payload = json.loads(path.read_text(encoding="utf-8"))
         return cls(Document(**item) for item in payload)
 
-    def _score(self, query: str, index: int) -> float:
+    def _score(self, query_tokens: list[str], index: int) -> float:
         frequencies = self._term_frequencies[index]
         length = len(self._tokens[index])
         score = 0.0
-        for term in tokenize(query):
+        for term in query_tokens:
             frequency = frequencies.get(term, 0)
             if not frequency:
                 continue
@@ -122,8 +122,9 @@ class BM25Retriever:
         if top_k < 1:
             raise ValueError("top_k must be at least 1")
 
+        query_tokens = tokenize(query)
         scored = [
-            RetrievedDocument(document=document, score=self._score(query, index))
+            RetrievedDocument(document=document, score=self._score(query_tokens, index))
             for index, document in enumerate(self.documents)
         ]
         scored.sort(key=lambda item: (-item.score, item.document.doc_id))

@@ -61,7 +61,7 @@ class SafeCalculator:
         except (SyntaxError, ArithmeticError, RecursionError, ValueError) as error:
             raise CalculatorError(str(error)) from error
         if isinstance(value, float):
-            return str(int(value)) if value.is_integer() else f"{value:.8g}"
+            return str(int(value)) if value.is_integer() else str(value)
         return str(value)
 
     def _checked(self, value: int | float) -> int | float:
