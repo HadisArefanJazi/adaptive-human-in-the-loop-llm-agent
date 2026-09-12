@@ -1,0 +1,65 @@
+"""Reproduce the benchmark across training seeds without selecting a best run."""
+from __future__ import annotations
+
+import argparse
+import json
+import shutil
+from dataclasses import asdict
+from pathlib import Path
+from statistics import mean, stdev
+
+from adaptive_hitl_agent.experiment import ExperimentConfig, run_experiment
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--seeds", type=int, nargs="+", default=[1, 3, 5, 7, 11, 13, 17, 19])
+    parser.add_argument("--episodes", type=int, default=600)
+    parser.add_argument("--output-dir", type=Path, default=Path("results"))
+    parser.add_argument("--artifacts-dir", type=Path, default=Path("artifacts/benchmark"))
+    args = parser.parse_args()
+    if len(set(args.seeds)) != len(args.seeds):
+        parser.error("seeds must be distinct")
+    if args.episodes < 1:
+        parser.error("episodes must be positive")
+
+    args.output_dir.mkdir(parents=True, exist_ok=True)
+    runs = {}
+    metadata = {}
+    for seed in args.seeds:
+        artifact_dir = args.artifacts_dir / f"seed{seed}"
+        result = run_experiment(
+            ExperimentConfig(training_episodes=args.episodes, seed=seed),
+            output_dir=artifact_dir,
+        )
+        runs[str(seed)] = {name: asdict(metrics) for name, metrics in result.metrics.items()}
+        metadata = result.metadata
+        if seed == 7:
+            shutil.copyfile(artifact_dir / "metrics.json", args.output_dir / "benchmark_seed7.json")
+        print(f"seed {seed}: system success={result.metrics['adaptive_rl'].system_success:.1%}")
+
+    first = runs[str(args.seeds[0])]
+    summary = {}
+    for policy, metrics in first.items():
+        summary[policy] = {}
+        for metric, value in metrics.items():
+            if isinstance(value, (int, float)):
+                values = [run[policy][metric] for run in runs.values()]
+                summary[policy][metric] = {
+                    "mean": mean(values),
+                    "sample_std": stdev(values) if len(values) > 1 else 0.0,
+                }
+    payload = {
+        "seeds": args.seeds,
+        "training_episodes": args.episodes,
+        "metadata": metadata,
+        "summary": summary,
+        "runs": runs,
+    }
+    path = args.output_dir / "benchmark_multiseed.json"
+    path.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
+    print(f"Results written to {path}")
+
+
+if __name__ == "__main__":
+    main()

@@ -1,81 +1,163 @@
 {
-  "run": {
-    "command": "python -m adaptive_hitl_agent experiment --episodes 600 --seed 7",
-    "training_episodes": 600,
-    "training_tasks": 20,
+  "schema_version": 1,
+  "metadata": {
+    "python_version": "3.13.5",
+    "torch_version": "2.10.0+cpu",
+    "language_model": "RuleBasedLanguageModel",
+    "model_name": null,
+    "human_reviewer": "OracleHumanReviewer",
+    "train_tasks": 20,
     "test_tasks": 12,
-    "seed": 7
+    "data_sha256": {
+      "tasks.jsonl": "916ed6f2526efed682ba497a4aa0c1ea695cbc9669e57a88802e7fb8731ea9c9",
+      "knowledge_base.json": "0e61f2e974e90b1dbc9814ca667db13ab5e0a0e444fee3244921064149a2c91f"
+    }
+  },
+  "config": {
+    "training_episodes": 600,
+    "seed": 7,
+    "max_steps": 3,
+    "retrieval_top_k": 2,
+    "reward": {
+      "success_reward": 1.0,
+      "failure_penalty": -0.25,
+      "token_cost": 0.002,
+      "retrieval_cost": 0.08,
+      "tool_cost": 0.04,
+      "human_cost": 0.45,
+      "latency_cost": 0.02
+    }
   },
   "metrics": {
     "adaptive_rl": {
-      "task_success": 1.0,
-      "factuality": 1.0,
-      "average_reward": 0.7878333333333333,
-      "average_tokens": 14.833333333333334,
+      "system_success": 1.0,
+      "autonomous_success": 0.75,
+      "autonomous_answer_precision": 1.0,
+      "autonomous_answer_coverage": 0.75,
+      "average_reward": 0.7829999999999999,
+      "average_tokens": 15.166666666666666,
       "average_retrieval_calls": 0.25,
-      "average_tool_calls": 0.25,
-      "average_latency": 2.0,
+      "average_tool_calls": 0.3333333333333333,
+      "average_latency": 2.0416666666666665,
       "intervention_frequency": 0.25,
-      "average_steps": 1.5
+      "average_steps": 1.5833333333333333,
+      "success_by_category": {
+        "direct": 1.0,
+        "human": 1.0,
+        "retrieve": 1.0,
+        "tool": 1.0
+      }
     },
-    "fixed_rag": {
-      "task_success": 0.5,
-      "factuality": 1.0,
-      "average_reward": 0.30516666666666675,
-      "average_tokens": 17.416666666666668,
-      "average_retrieval_calls": 0.25,
+    "confidence_rag": {
+      "system_success": 0.5,
+      "autonomous_success": 0.5,
+      "autonomous_answer_precision": 1.0,
+      "autonomous_answer_coverage": 0.5,
+      "average_reward": 0.23016666666666663,
+      "average_tokens": 29.916666666666668,
+      "average_retrieval_calls": 0.75,
       "average_tool_calls": 0.0,
-      "average_latency": 0.75,
+      "average_latency": 1.25,
       "intervention_frequency": 0.0,
-      "average_steps": 1.25
+      "average_steps": 1.75,
+      "success_by_category": {
+        "direct": 1.0,
+        "human": 0.0,
+        "retrieve": 1.0,
+        "tool": 0.0
+      }
     },
     "always_retrieve": {
-      "task_success": 0.5,
-      "factuality": 1.0,
-      "average_reward": 0.19266666666666662,
+      "system_success": 0.5,
+      "autonomous_success": 0.5,
+      "autonomous_answer_precision": 1.0,
+      "autonomous_answer_coverage": 0.5,
+      "average_reward": 0.19266666666666665,
       "average_tokens": 36.166666666666664,
       "average_retrieval_calls": 1.0,
       "average_tool_calls": 0.0,
       "average_latency": 1.5,
       "intervention_frequency": 0.0,
-      "average_steps": 2.0
+      "average_steps": 2.0,
+      "success_by_category": {
+        "direct": 1.0,
+        "human": 0.0,
+        "retrieve": 1.0,
+        "tool": 0.0
+      }
     },
     "heuristic_router": {
-      "task_success": 1.0,
-      "factuality": 1.0,
+      "system_success": 1.0,
+      "autonomous_success": 0.75,
+      "autonomous_answer_precision": 1.0,
+      "autonomous_answer_coverage": 0.75,
       "average_reward": 0.7878333333333333,
       "average_tokens": 14.833333333333334,
       "average_retrieval_calls": 0.25,
       "average_tool_calls": 0.25,
       "average_latency": 2.0,
       "intervention_frequency": 0.25,
-      "average_steps": 1.5
+      "average_steps": 1.5,
+      "success_by_category": {
+        "direct": 1.0,
+        "human": 1.0,
+        "retrieve": 1.0,
+        "tool": 1.0
+      }
     },
     "no_human": {
-      "task_success": 0.75,
-      "factuality": 1.0,
-      "average_reward": 0.5531666666666667,
-      "average_tokens": 24.666666666666668,
+      "system_success": 0.75,
+      "autonomous_success": 0.75,
+      "autonomous_answer_precision": 1.0,
+      "autonomous_answer_coverage": 0.75,
+      "average_reward": 0.5473333333333333,
+      "average_tokens": 25.5,
       "average_retrieval_calls": 0.5,
-      "average_tool_calls": 0.5,
-      "average_latency": 1.25,
+      "average_tool_calls": 0.5833333333333334,
+      "average_latency": 1.2916666666666667,
       "intervention_frequency": 0.0,
-      "average_steps": 2.0
+      "average_steps": 2.0833333333333335,
+      "success_by_category": {
+        "direct": 1.0,
+        "human": 0.0,
+        "retrieve": 1.0,
+        "tool": 1.0
+      }
     },
     "direct_only": {
-      "task_success": 0.25,
-      "factuality": 1.0,
-      "average_reward": 0.027666666666666676,
+      "system_success": 0.25,
+      "autonomous_success": 0.25,
+      "autonomous_answer_precision": 1.0,
+      "autonomous_answer_coverage": 0.25,
+      "average_reward": 0.02766666666666665,
       "average_tokens": 12.416666666666666,
       "average_retrieval_calls": 0.0,
       "average_tool_calls": 0.0,
       "average_latency": 0.5,
       "intervention_frequency": 0.0,
-      "average_steps": 1.0
+      "average_steps": 1.0,
+      "success_by_category": {
+        "direct": 1.0,
+        "human": 0.0,
+        "retrieve": 0.0,
+        "tool": 0.0
+      }
     }
   },
   "training": {
-    "mean_last_50_reward": 0.7876400000000001,
-    "final_loss": 0.000019733768567675725
+    "config": {
+      "episodes": 600,
+      "batch_size": 32,
+      "replay_capacity": 4000,
+      "gamma": 0.95,
+      "learning_rate": 0.002,
+      "epsilon_start": 0.9,
+      "epsilon_end": 0.05,
+      "target_update_interval": 40,
+      "seed": 7
+    },
+    "episodes": 600,
+    "mean_last_50_reward": 0.7866,
+    "final_loss": 1.9377137505216524e-05
   }
 }
