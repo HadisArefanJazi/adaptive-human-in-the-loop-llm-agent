@@ -7,7 +7,7 @@ from .types import ModelAnswer
 
 
 class LanguageModel:
-    """Common interface used by the environment."""
+    """Common language-model interface used by the routing environment."""
 
     def confidence(
         self,
@@ -27,7 +27,7 @@ class LanguageModel:
 
 
 class RuleBasedLanguageModel(LanguageModel):
-    """Deterministic stand-in used to make experiments fast and reproducible."""
+    """Deterministic stand-in that keeps the benchmark fast and reproducible."""
 
     _memory = {
         "what is the capital of france?": "Paris",
@@ -60,26 +60,30 @@ class RuleBasedLanguageModel(LanguageModel):
         documents: Sequence[RetrievedDocument] = (),
         tool_output: str | None = None,
     ) -> ModelAnswer:
-        if tool_output is not None:
-            confidence = self.confidence(question, documents, tool_output)
-            return ModelAnswer(tool_output, confidence)
+        if tool_output is not None and tool_output != "TOOL_ERROR":
+            return ModelAnswer(
+                text=tool_output,
+                confidence=self.confidence(question, documents, tool_output),
+            )
 
         if documents and documents[0].score > 0:
-            answer = documents[0].document.answer
-            confidence = self.confidence(question, documents, tool_output)
-            return ModelAnswer(answer, confidence)
+            return ModelAnswer(
+                text=documents[0].document.answer,
+                confidence=self.confidence(question, documents, tool_output),
+            )
 
-        question_key = question.casefold().strip()
-        answer = self._memory.get(question_key, "I don't know")
-        confidence = self.confidence(question, documents, tool_output)
-        return ModelAnswer(answer, confidence)
+        answer = self._memory.get(question.casefold().strip(), "I don't know")
+        return ModelAnswer(
+            text=answer,
+            confidence=self.confidence(question, documents, tool_output),
+        )
 
 
 class HuggingFaceLanguageModel(LanguageModel):
     """Optional local Hugging Face causal-LM adapter.
 
-    The benchmark defaults to the deterministic model above so CI does not need
-    to download weights. Instantiating this class loads the requested model.
+    The benchmark defaults to RuleBasedLanguageModel so core installation and
+    CI do not download model weights.
     """
 
     def __init__(
@@ -88,16 +92,20 @@ class HuggingFaceLanguageModel(LanguageModel):
         max_new_tokens: int = 48,
         device: str = "cpu",
     ) -> None:
+        if max_new_tokens < 1:
+            raise ValueError("max_new_tokens must be positive")
         try:
             from transformers import AutoModelForCausalLM, AutoTokenizer
         except ImportError as error:
             raise ImportError(
-                "Install project dependencies before using HuggingFaceLanguageModel"
+                'Install the optional Hugging Face dependencies with: '
+                'pip install -e ".[hf]"'
             ) from error
 
         self.tokenizer = AutoTokenizer.from_pretrained(model_name)
         self.model = AutoModelForCausalLM.from_pretrained(model_name).to(device)
         self.model.eval()
+        self.model_name = model_name
         self.max_new_tokens = max_new_tokens
         self.device = device
 
@@ -107,8 +115,8 @@ class HuggingFaceLanguageModel(LanguageModel):
         documents: Sequence[RetrievedDocument] = (),
         tool_output: str | None = None,
     ) -> float:
-        # Replace this transparent prior with a calibrated confidence model in
-        # production. It avoids an extra, unaccounted generation during routing.
+        # This transparent prior avoids an extra generation during routing. A
+        # real deployment should replace it with calibrated uncertainty.
         if tool_output is not None and tool_output != "TOOL_ERROR":
             return 0.9
         if documents and documents[0].score > 0:
@@ -121,12 +129,11 @@ class HuggingFaceLanguageModel(LanguageModel):
         documents: Sequence[RetrievedDocument] = (),
         tool_output: str | None = None,
     ) -> ModelAnswer:
-        evidence_lines = []
-        for item in documents:
-            line = f"[{item.document.title}] {item.document.text}"
-            evidence_lines.append(line)
-        evidence = "\n".join(evidence_lines)
-
+        evidence = "\n".join(
+            f"[{item.document.title}] {item.document.text}" for item in documents
+        )
+        if tool_output == "TOOL_ERROR":
+            tool_output = None
         prompt = (
             "Answer with only a short final answer. If evidence or a tool result is "
             "provided, use it. If the answer is unknown, say 'I don't know'.\n\n"
@@ -143,5 +150,7 @@ class HuggingFaceLanguageModel(LanguageModel):
         )
         generated = output[0, encoded["input_ids"].shape[1] :]
         text = self.tokenizer.decode(generated, skip_special_tokens=True).strip()
-        confidence = self.confidence(question, documents, tool_output)
-        return ModelAnswer(text or "I don't know", confidence)
+        return ModelAnswer(
+            text=text or "I don't know",
+            confidence=self.confidence(question, documents, tool_output),
+        )

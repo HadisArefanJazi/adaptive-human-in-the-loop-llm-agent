@@ -32,11 +32,11 @@ STOPWORDS = {
 
 
 def tokenize(text: str) -> list[str]:
-    tokens = []
-    for token in TOKEN_RE.findall(text.casefold()):
-        if token not in STOPWORDS:
-            tokens.append(token)
-    return tokens
+    return [
+        token
+        for token in TOKEN_RE.findall(text.casefold())
+        if token not in STOPWORDS
+    ]
 
 
 @dataclass(frozen=True)
@@ -54,7 +54,7 @@ class RetrievedDocument:
 
 
 class BM25Retriever:
-    """A compact BM25 retriever suitable for local, inspectable RAG demos."""
+    """Compact local BM25 retriever used only when RETRIEVE is selected."""
 
     def __init__(
         self,
@@ -65,11 +65,16 @@ class BM25Retriever:
         self.documents = list(documents)
         if not self.documents:
             raise ValueError("At least one document is required")
+        if not math.isfinite(k1) or k1 <= 0:
+            raise ValueError("k1 must be positive")
+        if not 0 <= b <= 1:
+            raise ValueError("b must be between 0 and 1")
+
         self.k1 = k1
         self.b = b
+        self._tokens: list[list[str]] = []
+        self._term_frequencies: list[Counter[str]] = []
 
-        self._tokens = []
-        self._term_frequencies = []
         total_length = 0
         for document in self.documents:
             tokens = tokenize(f"{document.title} {document.text}")
@@ -78,50 +83,48 @@ class BM25Retriever:
             total_length += len(tokens)
         self._average_length = total_length / len(self.documents)
 
-        document_frequency = Counter()
+        document_frequency: Counter[str] = Counter()
         for tokens in self._tokens:
             document_frequency.update(set(tokens))
 
-        self._idf = {}
         document_count = len(self.documents)
-        for term, count in document_frequency.items():
-            numerator = document_count - count + 0.5
-            denominator = count + 0.5
-            self._idf[term] = math.log(1 + numerator / denominator)
+        self._idf = {
+            term: math.log(1 + (document_count - count + 0.5) / (count + 0.5))
+            for term, count in document_frequency.items()
+        }
 
     @classmethod
     def from_package_data(cls) -> "BM25Retriever":
         path = files("adaptive_hitl_agent.data").joinpath("knowledge_base.json")
         payload = json.loads(path.read_text(encoding="utf-8"))
-        documents = []
-        for item in payload:
-            documents.append(Document(**item))
-        return cls(documents)
+        return cls(Document(**item) for item in payload)
 
     def _score(self, query: str, index: int) -> float:
-        terms = tokenize(query)
         frequencies = self._term_frequencies[index]
         length = len(self._tokens[index])
         score = 0.0
-        for term in terms:
+        for term in tokenize(query):
             frequency = frequencies.get(term, 0)
             if not frequency:
                 continue
             denominator = frequency + self.k1 * (
                 1 - self.b + self.b * length / self._average_length
             )
-            score += self._idf.get(term, 0.0) * frequency * (self.k1 + 1) / denominator
+            score += (
+                self._idf.get(term, 0.0)
+                * frequency
+                * (self.k1 + 1)
+                / denominator
+            )
         return score
 
     def retrieve(self, query: str, top_k: int = 2) -> list[RetrievedDocument]:
-        scored = []
-        for index, document in enumerate(self.documents):
-            score = self._score(query, index)
-            scored.append(RetrievedDocument(document=document, score=score))
+        if top_k < 1:
+            raise ValueError("top_k must be at least 1")
 
+        scored = [
+            RetrievedDocument(document=document, score=self._score(query, index))
+            for index, document in enumerate(self.documents)
+        ]
         scored.sort(key=lambda item: (-item.score, item.document.doc_id))
-        return scored[: max(1, top_k)]
-
-    def signal(self, query: str) -> float:
-        best = self.retrieve(query, top_k=1)[0].score
-        return min(1.0, best / 5.0)
+        return scored[:top_k]

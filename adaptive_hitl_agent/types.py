@@ -23,20 +23,31 @@ class Task:
     split: str
     category: str
 
+    def __post_init__(self) -> None:
+        if not self.task_id.strip() or not self.question.strip():
+            raise ValueError("Task id and question must be non-empty")
+        if not self.acceptable_answers or any(
+            not isinstance(answer, str) or not answer.strip()
+            for answer in self.acceptable_answers
+        ):
+            raise ValueError("A task needs at least one non-empty reference answer")
+        if self.split not in {"train", "test"}:
+            raise ValueError("Task split must be 'train' or 'test'")
+        if not self.category.strip():
+            raise ValueError("Task category must be non-empty")
+
     @classmethod
     def from_dict(cls, payload: dict[str, Any]) -> "Task":
         answers = payload.get("acceptable_answers")
         if answers is None:
             answers = [payload["answer"]]
-
-        acceptable_answers = []
-        for answer in answers:
-            acceptable_answers.append(str(answer))
+        if not isinstance(answers, (list, tuple)):
+            raise ValueError("acceptable_answers must be a list of answers")
 
         return cls(
             task_id=str(payload["id"]),
             question=str(payload["question"]),
-            acceptable_answers=tuple(acceptable_answers),
+            acceptable_answers=tuple(str(answer) for answer in answers),
             split=str(payload["split"]),
             category=str(payload["category"]),
         )
@@ -55,13 +66,7 @@ class ResourceUsage:
     latency_units: float = 0.0
 
     def copy(self) -> "ResourceUsage":
-        return ResourceUsage(
-            tokens=self.tokens,
-            retrieval_calls=self.retrieval_calls,
-            tool_calls=self.tool_calls,
-            human_calls=self.human_calls,
-            latency_units=self.latency_units,
-        )
+        return ResourceUsage(**self.as_dict())
 
     def delta(self, earlier: "ResourceUsage") -> "ResourceUsage":
         return ResourceUsage(
@@ -93,7 +98,6 @@ class Observation:
     features: tuple[float, ...]
     feature_names: tuple[str, ...]
     direct_confidence: float
-    retrieval_signal: float
     math_signal: float
     ambiguity_signal: float
     has_retrieval: bool
@@ -101,10 +105,7 @@ class Observation:
     step_index: int
 
     def as_dict(self) -> dict[str, float]:
-        result = {}
-        for name, value in zip(self.feature_names, self.features):
-            result[name] = value
-        return result
+        return dict(zip(self.feature_names, self.features, strict=True))
 
 
 @dataclass(frozen=True)
@@ -124,12 +125,12 @@ def normalize_answer(text: str) -> str:
     lowered = text.casefold().replace("°", "")
     words = re.findall(r"[\w#.-]+", lowered)
     normalized = " ".join(words)
-    return normalized.strip(" .-")
+    # Keep leading signs and decimal points: -5 and .5 are not 5.
+    return normalized.strip().rstrip(".")
 
 
 def is_correct(answer: str, acceptable_answers: tuple[str, ...]) -> bool:
     normalized = normalize_answer(answer)
-    for candidate in acceptable_answers:
-        if normalized == normalize_answer(candidate):
-            return True
-    return False
+    return bool(normalized) and any(
+        normalized == normalize_answer(candidate) for candidate in acceptable_answers
+    )

@@ -2,18 +2,19 @@ from __future__ import annotations
 
 import argparse
 
-from .experiment import ExperimentConfig, format_metrics, run_experiment
+from .evaluation import format_metrics
+from .experiment import ExperimentConfig, run_experiment
 
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="adaptive-hitl",
-        description="Train and compare a resource-aware human-in-the-loop agent.",
+        description="Train and compare a cost-aware human-in-the-loop routing agent.",
     )
     subparsers = parser.add_subparsers(dest="command", required=True)
     experiment = subparsers.add_parser(
         "experiment",
-        help="Train the DQN router and evaluate it against all baselines.",
+        help="Train the DQN router and evaluate it against comparison policies.",
     )
     experiment.add_argument("--episodes", type=int, default=600)
     experiment.add_argument("--seed", type=int, default=7)
@@ -22,9 +23,13 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def main() -> None:
-    args = build_parser().parse_args()
+    parser = build_parser()
+    args = parser.parse_args()
     if args.command == "experiment":
-        config = ExperimentConfig(training_episodes=args.episodes, seed=args.seed)
+        try:
+            config = ExperimentConfig(training_episodes=args.episodes, seed=args.seed)
+        except ValueError as error:
+            parser.error(str(error))
         result = run_experiment(config=config, output_dir=args.output_dir)
         print(format_metrics(result.metrics))
         print(f"\nArtifacts written to {args.output_dir}")
