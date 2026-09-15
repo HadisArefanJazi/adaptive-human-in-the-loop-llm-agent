@@ -151,14 +151,14 @@ python -m adaptive_hitl_agent experiment --episodes 600 --seed 7
 
 seed 7 results:
 
-| policy           | system success | autonomous success | avg. reward | retrievals | tool calls | human |
-| ---------------- | -------------: | -----------------: | ----------: | ---------: | ---------: | ----: |
-| adaptive dqn     |           100% |                75% |       0.783 |       0.25 |       0.33 |   25% |
-| heuristic router |           100% |                75% |       0.788 |       0.25 |       0.25 |   25% |
-| no human         |            75% |                75% |       0.547 |       0.50 |       0.58 |    0% |
-| confidence rag   |            50% |                50% |       0.230 |       0.75 |       0.00 |    0% |
-| always retrieve  |            50% |                50% |       0.193 |       1.00 |       0.00 |    0% |
-| direct only      |            25% |                25% |       0.028 |       0.00 |       0.00 |    0% |
+| policy | system success | autonomous success | precision | coverage | avg. reward | retrievals | tool calls | human |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| adaptive_rl | 100.0% | 70.0% | 100.0% | 70.0% | 0.746 | 0.32 | 0.32 | 30.0% |
+| confidence_rag | 38.0% | 38.0% | 73.1% | 52.0% | 0.051 | 0.94 | 0.00 | 0.0% |
+| always_retrieve | 38.0% | 38.0% | 73.1% | 52.0% | 0.042 | 1.00 | 0.00 | 0.0% |
+| heuristic_router | 100.0% | 70.0% | 100.0% | 70.0% | 0.746 | 0.32 | 0.32 | 30.0% |
+| no_human | 70.0% | 70.0% | 83.3% | 84.0% | 0.464 | 0.62 | 0.62 | 0.0% |
+| direct_only | 6.0% | 6.0% | 100.0% | 6.0% | -0.212 | 0.00 | 0.00 | 0.0% |
 
 the learned policy successfully discovers the intended routing behavior.
 
