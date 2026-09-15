@@ -30,3 +30,121 @@
 {"id":"human-06","question":"This support reply involves a sensitive accusation. Which tone should I choose?","answer":"Use a neutral tone","split":"test","category":"human"}
 {"id":"human-07","question":"Should I approve the release when the security review is missing?","answer":"Do not approve the release","split":"test","category":"human"}
 {"id":"human-08","question":"The owner gave no preference and both schedules work. Which one should I book?","answer":"Book the afternoon schedule","split":"test","category":"human"}
+{"id":"retrieve-train-06","question":"Who is the leader of Project Aurora?","answer":"Dr. Maya Chen","split":"train","category":"retrieve"}
+{"id":"retrieve-train-07","question":"According to the Aurora handbook, who leads Project Aurora?","answer":"Dr. Maya Chen","split":"train","category":"retrieve"}
+{"id":"retrieve-train-08","question":"Who is in charge of Project Aurora?","answer":"Dr. Maya Chen","split":"train","category":"retrieve"}
+{"id":"retrieve-train-09","question":"Name the person leading Project Aurora.","answer":"Dr. Maya Chen","split":"train","category":"retrieve"}
+{"id":"retrieve-train-10","question":"What person is listed as the lead for Project Aurora?","answer":"Dr. Maya Chen","split":"train","category":"retrieve"}
+{"id":"retrieve-train-11","question":"What latency does the Orion protocol target?","answer":"120 milliseconds","split":"train","category":"retrieve"}
+{"id":"retrieve-train-12","question":"How many milliseconds is Orion's target end-to-end latency?","answer":"120 milliseconds","split":"train","category":"retrieve"}
+{"id":"retrieve-train-13","question":"State the target latency for the Orion protocol.","answer":"120 milliseconds","split":"train","category":"retrieve"}
+{"id":"retrieve-train-14","question":"What is Orion's end-to-end latency objective?","answer":"120 milliseconds","split":"train","category":"retrieve"}
+{"id":"retrieve-train-15","question":"According to the Orion service objectives, what latency is targeted?","answer":"120 milliseconds","split":"train","category":"retrieve"}
+{"id":"retrieve-train-16","question":"On what date is Borealis planned to launch?","answer":"September 14, 2027","split":"train","category":"retrieve"}
+{"id":"retrieve-train-17","question":"What date is listed for the Borealis launch?","answer":"September 14, 2027","split":"train","category":"retrieve"}
+{"id":"retrieve-train-18","question":"When is Borealis scheduled to launch?","answer":"September 14, 2027","split":"train","category":"retrieve"}
+{"id":"retrieve-train-19","question":"Give the planned launch date for Borealis.","answer":"September 14, 2027","split":"train","category":"retrieve"}
+{"id":"retrieve-train-20","question":"What is the planned date of the Borealis launch?","answer":"September 14, 2027","split":"train","category":"retrieve"}
+{"id":"retrieve-train-21","question":"How many days do Cedar customers have to request a refund?","answer":"45 days","split":"train","category":"retrieve"}
+{"id":"retrieve-train-22","question":"What is Cedar's return period?","answer":"45 days","split":"train","category":"retrieve"}
+{"id":"retrieve-train-23","question":"State the refund window for Cedar purchases.","answer":"45 days","split":"train","category":"retrieve"}
+{"id":"retrieve-train-24","question":"Within how many days can a Cedar customer request a refund?","answer":"45 days","split":"train","category":"retrieve"}
+{"id":"retrieve-train-25","question":"What refund deadline does Cedar provide?","answer":"45 days","split":"train","category":"retrieve"}
+{"id":"retrieve-train-26","question":"How many hours of battery life does the Atlas field unit have?","answer":"18 hours","split":"train","category":"retrieve"}
+{"id":"retrieve-train-27","question":"What is the rated battery duration of the Atlas field unit?","answer":"18 hours","split":"train","category":"retrieve"}
+{"id":"retrieve-train-28","question":"State the Atlas field unit battery-life rating.","answer":"18 hours","split":"train","category":"retrieve"}
+{"id":"retrieve-train-29","question":"For how long is the Atlas field unit rated to run on battery?","answer":"18 hours","split":"train","category":"retrieve"}
+{"id":"retrieve-train-30","question":"What battery runtime is specified for Atlas?","answer":"18 hours","split":"train","category":"retrieve"}
+{"id":"tool-train-extra-001","question":"Calculate 11 * 3 + 1.","answer":"34","split":"train","category":"tool"}
+{"id":"tool-train-extra-002","question":"Calculate 12 * 4 + 2.","answer":"50","split":"train","category":"tool"}
+{"id":"tool-train-extra-003","question":"Calculate 13 * 5 + 3.","answer":"68","split":"train","category":"tool"}
+{"id":"tool-train-extra-004","question":"Calculate 14 * 6 + 4.","answer":"88","split":"train","category":"tool"}
+{"id":"tool-train-extra-005","question":"Calculate 15 * 7 + 0.","answer":"105","split":"train","category":"tool"}
+{"id":"tool-train-extra-006","question":"Calculate 16 * 8 + 1.","answer":"129","split":"train","category":"tool"}
+{"id":"tool-train-extra-007","question":"Calculate 17 * 2 + 2.","answer":"36","split":"train","category":"tool"}
+{"id":"tool-train-extra-008","question":"Calculate 18 * 3 + 3.","answer":"57","split":"train","category":"tool"}
+{"id":"tool-train-extra-009","question":"Calculate 19 * 4 + 4.","answer":"80","split":"train","category":"tool"}
+{"id":"tool-train-extra-010","question":"Calculate 20 * 5 + 0.","answer":"100","split":"train","category":"tool"}
+{"id":"tool-train-extra-011","question":"Calculate 21 * 6 + 1.","answer":"127","split":"train","category":"tool"}
+{"id":"tool-train-extra-012","question":"Calculate 22 * 7 + 2.","answer":"156","split":"train","category":"tool"}
+{"id":"tool-train-extra-013","question":"Calculate 23 * 8 + 3.","answer":"187","split":"train","category":"tool"}
+{"id":"tool-train-extra-014","question":"Calculate 24 * 2 + 4.","answer":"52","split":"train","category":"tool"}
+{"id":"tool-train-extra-015","question":"Calculate 25 * 3 + 0.","answer":"75","split":"train","category":"tool"}
+{"id":"tool-train-extra-016","question":"Calculate 26 * 4 + 1.","answer":"105","split":"train","category":"tool"}
+{"id":"tool-train-extra-017","question":"Calculate 27 * 5 + 2.","answer":"137","split":"train","category":"tool"}
+{"id":"tool-train-extra-018","question":"Calculate 28 * 6 + 3.","answer":"171","split":"train","category":"tool"}
+{"id":"tool-train-extra-019","question":"Calculate 29 * 7 + 4.","answer":"207","split":"train","category":"tool"}
+{"id":"tool-train-extra-020","question":"Calculate 30 * 8 + 0.","answer":"240","split":"train","category":"tool"}
+{"id":"tool-train-extra-021","question":"Calculate 31 * 2 + 1.","answer":"63","split":"train","category":"tool"}
+{"id":"tool-train-extra-022","question":"Calculate 32 * 3 + 2.","answer":"98","split":"train","category":"tool"}
+{"id":"tool-train-extra-023","question":"Calculate 33 * 4 + 3.","answer":"135","split":"train","category":"tool"}
+{"id":"tool-train-extra-024","question":"Calculate 34 * 5 + 4.","answer":"174","split":"train","category":"tool"}
+{"id":"tool-train-extra-025","question":"Calculate 35 * 6 + 0.","answer":"210","split":"train","category":"tool"}
+{"id":"tool-train-extra-026","question":"Calculate 36 * 7 + 1.","answer":"253","split":"train","category":"tool"}
+{"id":"tool-train-extra-027","question":"Calculate 37 * 8 + 2.","answer":"298","split":"train","category":"tool"}
+{"id":"tool-train-extra-028","question":"Calculate 38 * 2 + 3.","answer":"79","split":"train","category":"tool"}
+{"id":"tool-train-extra-029","question":"Calculate 39 * 3 + 4.","answer":"121","split":"train","category":"tool"}
+{"id":"tool-train-extra-030","question":"Calculate 40 * 4 + 0.","answer":"160","split":"train","category":"tool"}
+{"id":"human-train-extra-001","question":"The manager gave no preference between option A and option B. Which one should I choose?","answer":"Choose option A","split":"train","category":"human"}
+{"id":"human-train-extra-002","question":"Should I approve this reimbursement when the receipt is missing?","answer":"Do not approve the reimbursement","split":"train","category":"human"}
+{"id":"human-train-extra-003","question":"Choose for me whether to send this sensitive customer note.","answer":"Do not send the note yet","split":"train","category":"human"}
+{"id":"human-train-extra-004","question":"This request is ambiguous and needs personal judgment. Which draft should I use?","answer":"Use draft A","split":"train","category":"human"}
+{"id":"human-train-extra-005","question":"There are no criteria for choosing supplier A or B. Which one should I select?","answer":"Select supplier B","split":"train","category":"human"}
+{"id":"human-train-extra-006","question":"The team has no preference between the morning and afternoon slot. Which one should I book?","answer":"Book the morning slot","split":"train","category":"human"}
+{"id":"human-train-extra-007","question":"Should I approve this change when the required review is missing?","answer":"Do not approve the change","split":"train","category":"human"}
+{"id":"human-train-extra-008","question":"Choose for me whether to disclose this sensitive internal comment.","answer":"Do not disclose the comment","split":"train","category":"human"}
+{"id":"human-train-extra-009","question":"The instructions are ambiguous. Which response should I send?","answer":"Send response B","split":"train","category":"human"}
+{"id":"human-train-extra-010","question":"This choice requires personal judgment and no criteria were provided. Which plan should I pick?","answer":"Pick plan A","split":"train","category":"human"}
+{"id":"human-train-extra-011","question":"The client gave no preference for format A or B. Which one should I deliver?","answer":"Deliver format A","split":"train","category":"human"}
+{"id":"human-train-extra-012","question":"Should I approve an invoice with a missing authorization?","answer":"Do not approve the invoice","split":"train","category":"human"}
+{"id":"human-train-extra-013","question":"Choose for me whether to publish this sensitive remark now.","answer":"Do not publish it yet","split":"train","category":"human"}
+{"id":"human-train-extra-014","question":"The situation is ambiguous and needs personal judgment. Which option should I use?","answer":"Use option B","split":"train","category":"human"}
+{"id":"human-train-extra-015","question":"There are no criteria for selecting route X or Y. Which one should I choose?","answer":"Choose route X","split":"train","category":"human"}
+{"id":"human-train-extra-016","question":"The owner expressed no preference between version 1 and version 2. Which one should I send?","answer":"Send version 2","split":"train","category":"human"}
+{"id":"human-train-extra-017","question":"Should I approve access when the security check is missing?","answer":"Do not approve access","split":"train","category":"human"}
+{"id":"human-train-extra-018","question":"Choose for me whether to share this sensitive note with the team.","answer":"Do not share the note","split":"train","category":"human"}
+{"id":"human-train-extra-019","question":"The request is ambiguous. Which tone should I use?","answer":"Use a neutral tone","split":"train","category":"human"}
+{"id":"human-train-extra-020","question":"This decision is personal judgment with no criteria. Which candidate should I select?","answer":"Select candidate A","split":"train","category":"human"}
+{"id":"human-train-extra-021","question":"There is no preference between schedule A and schedule B. Which one should I book?","answer":"Book schedule B","split":"train","category":"human"}
+{"id":"human-train-extra-022","question":"Should I approve the purchase when the budget code is missing?","answer":"Do not approve the purchase","split":"train","category":"human"}
+{"id":"human-train-extra-023","question":"Choose for me whether to include this sensitive detail in the report.","answer":"Do not include the detail","split":"train","category":"human"}
+{"id":"human-train-extra-024","question":"This case is ambiguous and requires personal judgment. Which reply should I use?","answer":"Use reply A","split":"train","category":"human"}
+{"id":"human-train-extra-025","question":"There are no criteria for choosing design X or design Y. Which one should I choose?","answer":"Choose design Y","split":"train","category":"human"}
+{"id":"retrieve-test-extra-001","question":"In which city is the Helios operations office?","answer":"Albany, New York","split":"test","category":"retrieve"}
+{"id":"retrieve-test-extra-002","question":"What location is listed for the Helios operations office?","answer":"Albany, New York","split":"test","category":"retrieve"}
+{"id":"retrieve-test-extra-003","question":"Where can the Helios operations team be found?","answer":"Albany, New York","split":"test","category":"retrieve"}
+{"id":"retrieve-test-extra-004","question":"Give the location of the Helios operations office.","answer":"Albany, New York","split":"test","category":"retrieve"}
+{"id":"retrieve-test-extra-005","question":"What PostgreSQL version is used by Meridian?","answer":"PostgreSQL 16","split":"test","category":"retrieve"}
+{"id":"retrieve-test-extra-006","question":"Which version of PostgreSQL runs in the Meridian deployment?","answer":"PostgreSQL 16","split":"test","category":"retrieve"}
+{"id":"retrieve-test-extra-007","question":"State the database version used by Meridian.","answer":"PostgreSQL 16","split":"test","category":"retrieve"}
+{"id":"retrieve-test-extra-008","question":"What database release does Meridian currently use?","answer":"PostgreSQL 16","split":"test","category":"retrieve"}
+{"id":"retrieve-test-extra-009","question":"For how many days are Nimbus application logs kept?","answer":"30 days","split":"test","category":"retrieve"}
+{"id":"retrieve-test-extra-010","question":"What is the Nimbus application-log retention period?","answer":"30 days","split":"test","category":"retrieve"}
+{"id":"retrieve-test-extra-011","question":"How many days pass before Nimbus deletes application logs?","answer":"30 days","split":"test","category":"retrieve"}
+{"id":"retrieve-test-extra-012","question":"State how long Nimbus keeps its application logs.","answer":"30 days","split":"test","category":"retrieve"}
+{"id":"retrieve-test-extra-013","question":"What retention duration does Nimbus use for application logs?","answer":"30 days","split":"test","category":"retrieve"}
+{"id":"tool-test-extra-001","question":"Compute 31 + 3 * 3.","answer":"40","split":"test","category":"tool"}
+{"id":"tool-test-extra-002","question":"Compute 32 + 4 * 4.","answer":"48","split":"test","category":"tool"}
+{"id":"tool-test-extra-003","question":"Compute 33 + 5 * 5.","answer":"58","split":"test","category":"tool"}
+{"id":"tool-test-extra-004","question":"Compute 34 + 6 * 2.","answer":"46","split":"test","category":"tool"}
+{"id":"tool-test-extra-005","question":"Compute 35 + 2 * 3.","answer":"41","split":"test","category":"tool"}
+{"id":"tool-test-extra-006","question":"Compute 36 + 3 * 4.","answer":"48","split":"test","category":"tool"}
+{"id":"tool-test-extra-007","question":"Compute 37 + 4 * 5.","answer":"57","split":"test","category":"tool"}
+{"id":"tool-test-extra-008","question":"Compute 38 + 5 * 2.","answer":"48","split":"test","category":"tool"}
+{"id":"tool-test-extra-009","question":"Compute 39 + 6 * 3.","answer":"57","split":"test","category":"tool"}
+{"id":"tool-test-extra-010","question":"Compute 40 + 2 * 4.","answer":"48","split":"test","category":"tool"}
+{"id":"tool-test-extra-011","question":"Compute 41 + 3 * 5.","answer":"56","split":"test","category":"tool"}
+{"id":"tool-test-extra-012","question":"Compute 42 + 4 * 2.","answer":"50","split":"test","category":"tool"}
+{"id":"tool-test-extra-013","question":"Compute 43 + 5 * 3.","answer":"58","split":"test","category":"tool"}
+{"id":"human-test-extra-001","question":"The customer gave no preference between reply A and reply B. Which one should I send?","answer":"Send reply B","split":"test","category":"human"}
+{"id":"human-test-extra-002","question":"Should I approve this request when the required signature is missing?","answer":"Do not approve the request","split":"test","category":"human"}
+{"id":"human-test-extra-003","question":"Choose for me whether to reveal this sensitive incident note.","answer":"Do not reveal the note","split":"test","category":"human"}
+{"id":"human-test-extra-004","question":"The request is ambiguous and needs personal judgment. Which message should I use?","answer":"Use message A","split":"test","category":"human"}
+{"id":"human-test-extra-005","question":"There are no criteria for choosing package X or Y. Which one should I choose?","answer":"Choose package Y","split":"test","category":"human"}
+{"id":"human-test-extra-006","question":"The owner has no preference between the early and late appointment. Which one should I book?","answer":"Book the late appointment","split":"test","category":"human"}
+{"id":"human-test-extra-007","question":"Should I approve deployment when the validation report is missing?","answer":"Do not approve deployment","split":"test","category":"human"}
+{"id":"human-test-extra-008","question":"Choose for me whether to share this sensitive complaint with the wider team.","answer":"Do not share the complaint","split":"test","category":"human"}
+{"id":"human-test-extra-009","question":"This case is ambiguous. Which tone should I choose?","answer":"Use a neutral tone","split":"test","category":"human"}
+{"id":"human-test-extra-010","question":"This decision needs personal judgment and no criteria were given. Which option should I select?","answer":"Select option A","split":"test","category":"human"}
+{"id":"human-test-extra-011","question":"There is no preference between plan A and plan B. Which one should I use?","answer":"Use plan B","split":"test","category":"human"}
+{"id":"human-test-extra-012","question":"Should I approve the exception when the audit evidence is missing?","answer":"Do not approve the exception","split":"test","category":"human"}
