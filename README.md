@@ -281,20 +281,3 @@ the benchmark is intentionally small and synthetic. the default language model a
 ## license
 
 mit
-
-## lowercase code naming
-
-project-defined classes, variables, constants, action labels, comments, and messages use lowercase names. for example:
-
-```python
-from adaptive_hitl_agent import action_type, dqn_policy, task_record, training_config
-from adaptive_hitl_agent.tools import safe_calculator
-
-answer_action = action_type.answer_directly
-calculator = safe_calculator()
-answer = calculator.calculate("calculate 2 + 3")
-```
-
-python literals and external api names retain their required spelling, such as `None`, `True`, `ValueError`, `torch.Tensor`, and `nn.Linear`. case-sensitive model identifiers, scientific units and symbols, benchmark data, and mixed-case regression inputs also retain meaningful case.
-
-checkpoints and traces use lowercase action labels. checkpoint loading matches action labels case-insensitively and validates their order.
