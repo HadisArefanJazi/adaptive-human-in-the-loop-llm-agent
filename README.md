@@ -1,4 +1,4 @@
-# adaptive human-in-the-loop llm agent
+# Adaptive human-in-the-loop llm agent
 
 a small reinforcement-learning project that learns when an ai assistant should:
 
@@ -9,7 +9,7 @@ a small reinforcement-learning project that learns when an ai assistant should:
 
 the goal is not only to answer correctly, but to do so while minimizing resource cost.
 
-## core idea
+## Core idea
 
 each question is treated as a short routing episode:
 
@@ -27,7 +27,7 @@ correctness reward − resource cost
 
 the router learns which action is appropriate from interaction with the environment.
 
-## state
+## State
 
 the policy observes seven features:
 
@@ -43,7 +43,7 @@ episode progress
 
 these features form the state given to the dqn.
 
-## actions
+## Actions
 
 the agent has four possible actions:
 
@@ -60,7 +60,7 @@ ask_human
 
 unavailable actions are masked during both inference and dqn training.
 
-## reward
+## Reward
 
 a correct final answer receives:
 
@@ -93,7 +93,7 @@ reward = answer_quality - resource_cost
 
 this encourages the policy to use expensive resources only when necessary.
 
-## dqn
+## DQN
 
 the routing policy is a small pytorch network:
 
@@ -121,7 +121,7 @@ epsilon:                0.90 → 0.05
 target update interval: 40 episodes
 ```
 
-## components
+## Components
 
 the experiment intentionally uses lightweight components so the routing behavior remains easy to inspect.
 
@@ -141,7 +141,7 @@ oracle_human_reviewer
 
 an optional hugging face language-model adapter is also included.
 
-## results
+## Results
 
 default experiment:
 
@@ -164,7 +164,7 @@ the learned policy successfully discovers the intended routing behavior.
 
 the heuristic performs similarly on this small structured dataset, and obviously these results demonstrate successful policy learning rather than an advantage of rl over heuristics.
 
-## installation
+## Installation
 
 python 3.10+ is required.
 
@@ -201,7 +201,7 @@ artifacts/latest/
 └── dqn_policy.pt
 ```
 
-## project structure
+## Project structure
 
 ```text
 adaptive_hitl_agent/
@@ -224,7 +224,7 @@ scripts/
 results/
 ```
 
-## benchmark
+## Benchmark
 
 the bundled benchmark contains four task categories:
 
@@ -249,7 +249,7 @@ reference results are stored in:
 results/
 ```
 
-## optional hugging face model
+## Optional hugging face model
 
 install:
 
@@ -274,10 +274,10 @@ run_experiment(
 )
 ```
 
-## limitations
+## Limitations
 
 the benchmark is intentionally small and synthetic. the default language model and human reviewer are deterministic simulations, and latency/token costs are estimates rather than real production measurements.
 
-## license
+## License
 
-mit
+MIT
