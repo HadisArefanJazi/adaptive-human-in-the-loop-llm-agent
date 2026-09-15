@@ -1,0 +1,32 @@
+{"id":"direct-01","question":"What is the capital of France?","answer":"Paris","split":"train","category":"direct"}
+{"id":"direct-02","question":"Who wrote Hamlet?","answer":"William Shakespeare","split":"train","category":"direct"}
+{"id":"direct-03","question":"At what temperature does water freeze in Celsius?","acceptable_answers":["0°C","0 C"],"split":"train","category":"direct"}
+{"id":"direct-04","question":"What is the largest planet in our solar system?","answer":"Jupiter","split":"train","category":"direct"}
+{"id":"direct-05","question":"Which planet is known as the Red Planet?","answer":"Mars","split":"train","category":"direct"}
+{"id":"retrieve-01","question":"Who leads Project Aurora?","answer":"Dr. Maya Chen","split":"train","category":"retrieve"}
+{"id":"retrieve-02","question":"What is the Orion protocol latency target?","acceptable_answers":["120 milliseconds","120 ms"],"split":"train","category":"retrieve"}
+{"id":"retrieve-03","question":"When is the Borealis launch date?","answer":"September 14, 2027","split":"train","category":"retrieve"}
+{"id":"retrieve-04","question":"How long is the Cedar refund window?","answer":"45 days","split":"train","category":"retrieve"}
+{"id":"retrieve-05","question":"What battery life is the Atlas field unit rated for?","answer":"18 hours","split":"train","category":"retrieve"}
+{"id":"tool-01","question":"Calculate 7 * 9.","answer":"63","split":"train","category":"tool"}
+{"id":"tool-02","question":"What is (18 / 3) + 4?","answer":"10","split":"train","category":"tool"}
+{"id":"tool-03","question":"Calculate 25 - 8 * 2.","answer":"9","split":"train","category":"tool"}
+{"id":"tool-04","question":"Compute 144 / 12.","answer":"12","split":"train","category":"tool"}
+{"id":"tool-05","question":"Calculate 6 ** 3.","answer":"216","split":"train","category":"tool"}
+{"id":"human-01","question":"The client gave no preference between draft A and B. Which one should I send?","answer":"Draft B","split":"train","category":"human"}
+{"id":"human-02","question":"Should I approve this expense with a missing receipt?","answer":"Do not approve","split":"train","category":"human"}
+{"id":"human-03","question":"Choose for me whether to disclose this sensitive note now.","answer":"Do not disclose it yet","split":"train","category":"human"}
+{"id":"human-04","question":"The request is ambiguous and needs personal judgment. Which response should I use?","answer":"Use response A","split":"train","category":"human"}
+{"id":"human-05","question":"There are no criteria for selecting vendor X or Y. Which one should I choose?","answer":"Vendor Y","split":"train","category":"human"}
+{"id":"direct-06","question":"What is the capital of Japan?","answer":"Tokyo","split":"test","category":"direct"}
+{"id":"direct-07","question":"What is the chemical symbol for gold?","answer":"Au","split":"test","category":"direct"}
+{"id":"direct-08","question":"At what temperature does water boil in Celsius?","acceptable_answers":["100°C","100 C"],"split":"test","category":"direct"}
+{"id":"retrieve-06","question":"Where is the Helios operations office?","answer":"Albany, New York","split":"test","category":"retrieve"}
+{"id":"retrieve-07","question":"Which database version does Meridian use?","answer":"PostgreSQL 16","split":"test","category":"retrieve"}
+{"id":"retrieve-08","question":"How long does Nimbus retain application logs?","answer":"30 days","split":"test","category":"retrieve"}
+{"id":"tool-06","question":"Calculate (5 + 7) * 3.","answer":"36","split":"test","category":"tool"}
+{"id":"tool-07","question":"Compute 100 / 4 + 6.","answer":"31","split":"test","category":"tool"}
+{"id":"tool-08","question":"Calculate 9 * 9 - 10.","answer":"71","split":"test","category":"tool"}
+{"id":"human-06","question":"This support reply involves a sensitive accusation. Which tone should I choose?","answer":"Use a neutral tone","split":"test","category":"human"}
+{"id":"human-07","question":"Should I approve the release when the security review is missing?","answer":"Do not approve the release","split":"test","category":"human"}
+{"id":"human-08","question":"The owner gave no preference and both schedules work. Which one should I book?","answer":"Book the afternoon schedule","split":"test","category":"human"}
