@@ -30,7 +30,7 @@ from .types import task_record
 
 
 class experiment_config(immutable_record):
-    training_episodes: int = 600
+    training_episodes: int = 3000
     seed: int = 7
     max_steps: int = 3
     retrieval_top_k: int = 2
@@ -46,7 +46,7 @@ class experiment_config(immutable_record):
 
     def __init__(
         self,
-        training_episodes: int = 600,
+        training_episodes: int = 3000,
         seed: int = 7,
         max_steps: int = 3,
         retrieval_top_k: int = 2,

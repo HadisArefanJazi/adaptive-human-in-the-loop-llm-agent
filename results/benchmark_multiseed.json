@@ -1,0 +1,1239 @@
+{
+  "seeds": [
+    1,
+    3,
+    5,
+    7,
+    11,
+    13,
+    17,
+    19
+  ],
+  "training_episodes": 3000,
+  "reference_seed": 7,
+  "metadata": {
+    "package_version": "0.2.0",
+    "platform": "macOS-14.2.1-arm64-arm-64bit",
+    "machine": "arm64",
+    "training_device": "cpu",
+    "python_version": "3.11.4",
+    "torch_version": "2.14.0",
+    "language_model": "rule_based_language_model",
+    "model_name": null,
+    "human_reviewer": "oracle_human_reviewer",
+    "train_tasks": 500,
+    "test_tasks": 200,
+    "data_sha256": {
+      "tasks.jsonl": "541e35ff1a64461d8b84cabe77cbaff10dfc734cd56a4e07f81736e17336834a",
+      "knowledge_base.json": "0e61f2e974e90b1dbc9814ca667db13ab5e0a0e444fee3244921064149a2c91f"
+    }
+  },
+  "summary": {
+    "adaptive_rl": {
+      "system_success": {
+        "mean": 0.995,
+        "sample_std": 0.0
+      },
+      "autonomous_success": {
+        "mean": 0.68,
+        "sample_std": 0.0
+      },
+      "autonomous_answer_precision": {
+        "mean": 0.9927007299270073,
+        "sample_std": 0.0
+      },
+      "autonomous_answer_coverage": {
+        "mean": 0.685,
+        "sample_std": 0.0
+      },
+      "average_reward": {
+        "mean": 0.7276899999999996,
+        "sample_std": 0.0
+      },
+      "average_tokens": {
+        "mean": 17.855,
+        "sample_std": 0.0
+      },
+      "average_retrieval_calls": {
+        "mean": 0.335,
+        "sample_std": 0.0
+      },
+      "average_tool_calls": {
+        "mean": 0.335,
+        "sample_std": 0.0
+      },
+      "average_latency": {
+        "mean": 2.42,
+        "sample_std": 0.0
+      },
+      "intervention_frequency": {
+        "mean": 0.315,
+        "sample_std": 0.0
+      },
+      "average_steps": {
+        "mean": 1.67,
+        "sample_std": 0.0
+      }
+    },
+    "confidence_rag": {
+      "system_success": {
+        "mean": 0.345,
+        "sample_std": 0.0
+      },
+      "autonomous_success": {
+        "mean": 0.345,
+        "sample_std": 0.0
+      },
+      "autonomous_answer_precision": {
+        "mean": 0.5609756097560976,
+        "sample_std": 0.0
+      },
+      "autonomous_answer_coverage": {
+        "mean": 0.615,
+        "sample_std": 0.0
+      },
+      "average_reward": {
+        "mean": -0.0012700000000000766,
+        "sample_std": 0.0
+      },
+      "average_tokens": {
+        "mean": 37.01,
+        "sample_std": 0.0
+      },
+      "average_retrieval_calls": {
+        "mean": 0.985,
+        "sample_std": 0.0
+      },
+      "average_tool_calls": {
+        "mean": 0.0,
+        "sample_std": 0.0
+      },
+      "average_latency": {
+        "mean": 1.485,
+        "sample_std": 0.0
+      },
+      "intervention_frequency": {
+        "mean": 0.0,
+        "sample_std": 0.0
+      },
+      "average_steps": {
+        "mean": 1.985,
+        "sample_std": 0.0
+      }
+    },
+    "always_retrieve": {
+      "system_success": {
+        "mean": 0.345,
+        "sample_std": 0.0
+      },
+      "autonomous_success": {
+        "mean": 0.345,
+        "sample_std": 0.0
+      },
+      "autonomous_answer_precision": {
+        "mean": 0.5609756097560976,
+        "sample_std": 0.0
+      },
+      "autonomous_answer_coverage": {
+        "mean": 0.615,
+        "sample_std": 0.0
+      },
+      "average_reward": {
+        "mean": -0.003520000000000072,
+        "sample_std": 0.0
+      },
+      "average_tokens": {
+        "mean": 37.385,
+        "sample_std": 0.0
+      },
+      "average_retrieval_calls": {
+        "mean": 1.0,
+        "sample_std": 0.0
+      },
+      "average_tool_calls": {
+        "mean": 0.0,
+        "sample_std": 0.0
+      },
+      "average_latency": {
+        "mean": 1.5,
+        "sample_std": 0.0
+      },
+      "intervention_frequency": {
+        "mean": 0.0,
+        "sample_std": 0.0
+      },
+      "average_steps": {
+        "mean": 2.0,
+        "sample_std": 0.0
+      }
+    },
+    "heuristic_router": {
+      "system_success": {
+        "mean": 0.995,
+        "sample_std": 0.0
+      },
+      "autonomous_success": {
+        "mean": 0.68,
+        "sample_std": 0.0
+      },
+      "autonomous_answer_precision": {
+        "mean": 0.9927007299270073,
+        "sample_std": 0.0
+      },
+      "autonomous_answer_coverage": {
+        "mean": 0.685,
+        "sample_std": 0.0
+      },
+      "average_reward": {
+        "mean": 0.7276899999999996,
+        "sample_std": 0.0
+      },
+      "average_tokens": {
+        "mean": 17.855,
+        "sample_std": 0.0
+      },
+      "average_retrieval_calls": {
+        "mean": 0.335,
+        "sample_std": 0.0
+      },
+      "average_tool_calls": {
+        "mean": 0.335,
+        "sample_std": 0.0
+      },
+      "average_latency": {
+        "mean": 2.42,
+        "sample_std": 0.0
+      },
+      "intervention_frequency": {
+        "mean": 0.315,
+        "sample_std": 0.0
+      },
+      "average_steps": {
+        "mean": 1.67,
+        "sample_std": 0.0
+      }
+    },
+    "no_human": {
+      "system_success": {
+        "mean": 0.68,
+        "sample_std": 0.0
+      },
+      "autonomous_success": {
+        "mean": 0.68,
+        "sample_std": 0.0
+      },
+      "autonomous_answer_precision": {
+        "mean": 0.7513812154696132,
+        "sample_std": 0.0
+      },
+      "autonomous_answer_coverage": {
+        "mean": 0.905,
+        "sample_std": 0.0
+      },
+      "average_reward": {
+        "mean": 0.4309200000000004,
+        "sample_std": 0.0
+      },
+      "average_tokens": {
+        "mean": 30.79,
+        "sample_std": 0.0
+      },
+      "average_retrieval_calls": {
+        "mean": 0.65,
+        "sample_std": 0.0
+      },
+      "average_tool_calls": {
+        "mean": 0.65,
+        "sample_std": 0.0
+      },
+      "average_latency": {
+        "mean": 1.475,
+        "sample_std": 0.0
+      },
+      "intervention_frequency": {
+        "mean": 0.0,
+        "sample_std": 0.0
+      },
+      "average_steps": {
+        "mean": 2.3,
+        "sample_std": 0.0
+      }
+    },
+    "direct_only": {
+      "system_success": {
+        "mean": 0.015,
+        "sample_std": 0.0
+      },
+      "autonomous_success": {
+        "mean": 0.015,
+        "sample_std": 0.0
+      },
+      "autonomous_answer_precision": {
+        "mean": 1.0,
+        "sample_std": 0.0
+      },
+      "autonomous_answer_coverage": {
+        "mean": 0.015,
+        "sample_std": 0.0
+      },
+      "average_reward": {
+        "mean": -0.2725399999999995,
+        "sample_std": 0.0
+      },
+      "average_tokens": {
+        "mean": 15.645,
+        "sample_std": 0.0
+      },
+      "average_retrieval_calls": {
+        "mean": 0.0,
+        "sample_std": 0.0
+      },
+      "average_tool_calls": {
+        "mean": 0.0,
+        "sample_std": 0.0
+      },
+      "average_latency": {
+        "mean": 0.5,
+        "sample_std": 0.0
+      },
+      "intervention_frequency": {
+        "mean": 0.0,
+        "sample_std": 0.0
+      },
+      "average_steps": {
+        "mean": 1.0,
+        "sample_std": 0.0
+      }
+    }
+  },
+  "runs": {
+    "1": {
+      "adaptive_rl": {
+        "system_success": 0.995,
+        "autonomous_success": 0.68,
+        "autonomous_answer_precision": 0.9927007299270073,
+        "autonomous_answer_coverage": 0.685,
+        "average_reward": 0.7276899999999996,
+        "average_tokens": 17.855,
+        "average_retrieval_calls": 0.335,
+        "average_tool_calls": 0.335,
+        "average_latency": 2.42,
+        "intervention_frequency": 0.315,
+        "average_steps": 1.67,
+        "success_by_category": {
+          "direct": 1.0,
+          "human": 1.0,
+          "retrieve": 0.9850746268656716,
+          "tool": 1.0
+        }
+      },
+      "confidence_rag": {
+        "system_success": 0.345,
+        "autonomous_success": 0.345,
+        "autonomous_answer_precision": 0.5609756097560976,
+        "autonomous_answer_coverage": 0.615,
+        "average_reward": -0.0012700000000000766,
+        "average_tokens": 37.01,
+        "average_retrieval_calls": 0.985,
+        "average_tool_calls": 0.0,
+        "average_latency": 1.485,
+        "intervention_frequency": 0.0,
+        "average_steps": 1.985,
+        "success_by_category": {
+          "direct": 1.0,
+          "human": 0.0,
+          "retrieve": 0.9850746268656716,
+          "tool": 0.0
+        }
+      },
+      "always_retrieve": {
+        "system_success": 0.345,
+        "autonomous_success": 0.345,
+        "autonomous_answer_precision": 0.5609756097560976,
+        "autonomous_answer_coverage": 0.615,
+        "average_reward": -0.003520000000000072,
+        "average_tokens": 37.385,
+        "average_retrieval_calls": 1.0,
+        "average_tool_calls": 0.0,
+        "average_latency": 1.5,
+        "intervention_frequency": 0.0,
+        "average_steps": 2.0,
+        "success_by_category": {
+          "direct": 1.0,
+          "human": 0.0,
+          "retrieve": 0.9850746268656716,
+          "tool": 0.0
+        }
+      },
+      "heuristic_router": {
+        "system_success": 0.995,
+        "autonomous_success": 0.68,
+        "autonomous_answer_precision": 0.9927007299270073,
+        "autonomous_answer_coverage": 0.685,
+        "average_reward": 0.7276899999999996,
+        "average_tokens": 17.855,
+        "average_retrieval_calls": 0.335,
+        "average_tool_calls": 0.335,
+        "average_latency": 2.42,
+        "intervention_frequency": 0.315,
+        "average_steps": 1.67,
+        "success_by_category": {
+          "direct": 1.0,
+          "human": 1.0,
+          "retrieve": 0.9850746268656716,
+          "tool": 1.0
+        }
+      },
+      "no_human": {
+        "system_success": 0.68,
+        "autonomous_success": 0.68,
+        "autonomous_answer_precision": 0.7513812154696132,
+        "autonomous_answer_coverage": 0.905,
+        "average_reward": 0.4309200000000004,
+        "average_tokens": 30.79,
+        "average_retrieval_calls": 0.65,
+        "average_tool_calls": 0.65,
+        "average_latency": 1.475,
+        "intervention_frequency": 0.0,
+        "average_steps": 2.3,
+        "success_by_category": {
+          "direct": 1.0,
+          "human": 0.0,
+          "retrieve": 0.9850746268656716,
+          "tool": 1.0
+        }
+      },
+      "direct_only": {
+        "system_success": 0.015,
+        "autonomous_success": 0.015,
+        "autonomous_answer_precision": 1.0,
+        "autonomous_answer_coverage": 0.015,
+        "average_reward": -0.2725399999999995,
+        "average_tokens": 15.645,
+        "average_retrieval_calls": 0.0,
+        "average_tool_calls": 0.0,
+        "average_latency": 0.5,
+        "intervention_frequency": 0.0,
+        "average_steps": 1.0,
+        "success_by_category": {
+          "direct": 1.0,
+          "human": 0.0,
+          "retrieve": 0.0,
+          "tool": 0.0
+        }
+      }
+    },
+    "3": {
+      "adaptive_rl": {
+        "system_success": 0.995,
+        "autonomous_success": 0.68,
+        "autonomous_answer_precision": 0.9927007299270073,
+        "autonomous_answer_coverage": 0.685,
+        "average_reward": 0.7276899999999996,
+        "average_tokens": 17.855,
+        "average_retrieval_calls": 0.335,
+        "average_tool_calls": 0.335,
+        "average_latency": 2.42,
+        "intervention_frequency": 0.315,
+        "average_steps": 1.67,
+        "success_by_category": {
+          "direct": 1.0,
+          "human": 1.0,
+          "retrieve": 0.9850746268656716,
+          "tool": 1.0
+        }
+      },
+      "confidence_rag": {
+        "system_success": 0.345,
+        "autonomous_success": 0.345,
+        "autonomous_answer_precision": 0.5609756097560976,
+        "autonomous_answer_coverage": 0.615,
+        "average_reward": -0.0012700000000000766,
+        "average_tokens": 37.01,
+        "average_retrieval_calls": 0.985,
+        "average_tool_calls": 0.0,
+        "average_latency": 1.485,
+        "intervention_frequency": 0.0,
+        "average_steps": 1.985,
+        "success_by_category": {
+          "direct": 1.0,
+          "human": 0.0,
+          "retrieve": 0.9850746268656716,
+          "tool": 0.0
+        }
+      },
+      "always_retrieve": {
+        "system_success": 0.345,
+        "autonomous_success": 0.345,
+        "autonomous_answer_precision": 0.5609756097560976,
+        "autonomous_answer_coverage": 0.615,
+        "average_reward": -0.003520000000000072,
+        "average_tokens": 37.385,
+        "average_retrieval_calls": 1.0,
+        "average_tool_calls": 0.0,
+        "average_latency": 1.5,
+        "intervention_frequency": 0.0,
+        "average_steps": 2.0,
+        "success_by_category": {
+          "direct": 1.0,
+          "human": 0.0,
+          "retrieve": 0.9850746268656716,
+          "tool": 0.0
+        }
+      },
+      "heuristic_router": {
+        "system_success": 0.995,
+        "autonomous_success": 0.68,
+        "autonomous_answer_precision": 0.9927007299270073,
+        "autonomous_answer_coverage": 0.685,
+        "average_reward": 0.7276899999999996,
+        "average_tokens": 17.855,
+        "average_retrieval_calls": 0.335,
+        "average_tool_calls": 0.335,
+        "average_latency": 2.42,
+        "intervention_frequency": 0.315,
+        "average_steps": 1.67,
+        "success_by_category": {
+          "direct": 1.0,
+          "human": 1.0,
+          "retrieve": 0.9850746268656716,
+          "tool": 1.0
+        }
+      },
+      "no_human": {
+        "system_success": 0.68,
+        "autonomous_success": 0.68,
+        "autonomous_answer_precision": 0.7513812154696132,
+        "autonomous_answer_coverage": 0.905,
+        "average_reward": 0.4309200000000004,
+        "average_tokens": 30.79,
+        "average_retrieval_calls": 0.65,
+        "average_tool_calls": 0.65,
+        "average_latency": 1.475,
+        "intervention_frequency": 0.0,
+        "average_steps": 2.3,
+        "success_by_category": {
+          "direct": 1.0,
+          "human": 0.0,
+          "retrieve": 0.9850746268656716,
+          "tool": 1.0
+        }
+      },
+      "direct_only": {
+        "system_success": 0.015,
+        "autonomous_success": 0.015,
+        "autonomous_answer_precision": 1.0,
+        "autonomous_answer_coverage": 0.015,
+        "average_reward": -0.2725399999999995,
+        "average_tokens": 15.645,
+        "average_retrieval_calls": 0.0,
+        "average_tool_calls": 0.0,
+        "average_latency": 0.5,
+        "intervention_frequency": 0.0,
+        "average_steps": 1.0,
+        "success_by_category": {
+          "direct": 1.0,
+          "human": 0.0,
+          "retrieve": 0.0,
+          "tool": 0.0
+        }
+      }
+    },
+    "5": {
+      "adaptive_rl": {
+        "system_success": 0.995,
+        "autonomous_success": 0.68,
+        "autonomous_answer_precision": 0.9927007299270073,
+        "autonomous_answer_coverage": 0.685,
+        "average_reward": 0.7276899999999996,
+        "average_tokens": 17.855,
+        "average_retrieval_calls": 0.335,
+        "average_tool_calls": 0.335,
+        "average_latency": 2.42,
+        "intervention_frequency": 0.315,
+        "average_steps": 1.67,
+        "success_by_category": {
+          "direct": 1.0,
+          "human": 1.0,
+          "retrieve": 0.9850746268656716,
+          "tool": 1.0
+        }
+      },
+      "confidence_rag": {
+        "system_success": 0.345,
+        "autonomous_success": 0.345,
+        "autonomous_answer_precision": 0.5609756097560976,
+        "autonomous_answer_coverage": 0.615,
+        "average_reward": -0.0012700000000000766,
+        "average_tokens": 37.01,
+        "average_retrieval_calls": 0.985,
+        "average_tool_calls": 0.0,
+        "average_latency": 1.485,
+        "intervention_frequency": 0.0,
+        "average_steps": 1.985,
+        "success_by_category": {
+          "direct": 1.0,
+          "human": 0.0,
+          "retrieve": 0.9850746268656716,
+          "tool": 0.0
+        }
+      },
+      "always_retrieve": {
+        "system_success": 0.345,
+        "autonomous_success": 0.345,
+        "autonomous_answer_precision": 0.5609756097560976,
+        "autonomous_answer_coverage": 0.615,
+        "average_reward": -0.003520000000000072,
+        "average_tokens": 37.385,
+        "average_retrieval_calls": 1.0,
+        "average_tool_calls": 0.0,
+        "average_latency": 1.5,
+        "intervention_frequency": 0.0,
+        "average_steps": 2.0,
+        "success_by_category": {
+          "direct": 1.0,
+          "human": 0.0,
+          "retrieve": 0.9850746268656716,
+          "tool": 0.0
+        }
+      },
+      "heuristic_router": {
+        "system_success": 0.995,
+        "autonomous_success": 0.68,
+        "autonomous_answer_precision": 0.9927007299270073,
+        "autonomous_answer_coverage": 0.685,
+        "average_reward": 0.7276899999999996,
+        "average_tokens": 17.855,
+        "average_retrieval_calls": 0.335,
+        "average_tool_calls": 0.335,
+        "average_latency": 2.42,
+        "intervention_frequency": 0.315,
+        "average_steps": 1.67,
+        "success_by_category": {
+          "direct": 1.0,
+          "human": 1.0,
+          "retrieve": 0.9850746268656716,
+          "tool": 1.0
+        }
+      },
+      "no_human": {
+        "system_success": 0.68,
+        "autonomous_success": 0.68,
+        "autonomous_answer_precision": 0.7513812154696132,
+        "autonomous_answer_coverage": 0.905,
+        "average_reward": 0.4309200000000004,
+        "average_tokens": 30.79,
+        "average_retrieval_calls": 0.65,
+        "average_tool_calls": 0.65,
+        "average_latency": 1.475,
+        "intervention_frequency": 0.0,
+        "average_steps": 2.3,
+        "success_by_category": {
+          "direct": 1.0,
+          "human": 0.0,
+          "retrieve": 0.9850746268656716,
+          "tool": 1.0
+        }
+      },
+      "direct_only": {
+        "system_success": 0.015,
+        "autonomous_success": 0.015,
+        "autonomous_answer_precision": 1.0,
+        "autonomous_answer_coverage": 0.015,
+        "average_reward": -0.2725399999999995,
+        "average_tokens": 15.645,
+        "average_retrieval_calls": 0.0,
+        "average_tool_calls": 0.0,
+        "average_latency": 0.5,
+        "intervention_frequency": 0.0,
+        "average_steps": 1.0,
+        "success_by_category": {
+          "direct": 1.0,
+          "human": 0.0,
+          "retrieve": 0.0,
+          "tool": 0.0
+        }
+      }
+    },
+    "7": {
+      "adaptive_rl": {
+        "system_success": 0.995,
+        "autonomous_success": 0.68,
+        "autonomous_answer_precision": 0.9927007299270073,
+        "autonomous_answer_coverage": 0.685,
+        "average_reward": 0.7276899999999996,
+        "average_tokens": 17.855,
+        "average_retrieval_calls": 0.335,
+        "average_tool_calls": 0.335,
+        "average_latency": 2.42,
+        "intervention_frequency": 0.315,
+        "average_steps": 1.67,
+        "success_by_category": {
+          "direct": 1.0,
+          "human": 1.0,
+          "retrieve": 0.9850746268656716,
+          "tool": 1.0
+        }
+      },
+      "confidence_rag": {
+        "system_success": 0.345,
+        "autonomous_success": 0.345,
+        "autonomous_answer_precision": 0.5609756097560976,
+        "autonomous_answer_coverage": 0.615,
+        "average_reward": -0.0012700000000000766,
+        "average_tokens": 37.01,
+        "average_retrieval_calls": 0.985,
+        "average_tool_calls": 0.0,
+        "average_latency": 1.485,
+        "intervention_frequency": 0.0,
+        "average_steps": 1.985,
+        "success_by_category": {
+          "direct": 1.0,
+          "human": 0.0,
+          "retrieve": 0.9850746268656716,
+          "tool": 0.0
+        }
+      },
+      "always_retrieve": {
+        "system_success": 0.345,
+        "autonomous_success": 0.345,
+        "autonomous_answer_precision": 0.5609756097560976,
+        "autonomous_answer_coverage": 0.615,
+        "average_reward": -0.003520000000000072,
+        "average_tokens": 37.385,
+        "average_retrieval_calls": 1.0,
+        "average_tool_calls": 0.0,
+        "average_latency": 1.5,
+        "intervention_frequency": 0.0,
+        "average_steps": 2.0,
+        "success_by_category": {
+          "direct": 1.0,
+          "human": 0.0,
+          "retrieve": 0.9850746268656716,
+          "tool": 0.0
+        }
+      },
+      "heuristic_router": {
+        "system_success": 0.995,
+        "autonomous_success": 0.68,
+        "autonomous_answer_precision": 0.9927007299270073,
+        "autonomous_answer_coverage": 0.685,
+        "average_reward": 0.7276899999999996,
+        "average_tokens": 17.855,
+        "average_retrieval_calls": 0.335,
+        "average_tool_calls": 0.335,
+        "average_latency": 2.42,
+        "intervention_frequency": 0.315,
+        "average_steps": 1.67,
+        "success_by_category": {
+          "direct": 1.0,
+          "human": 1.0,
+          "retrieve": 0.9850746268656716,
+          "tool": 1.0
+        }
+      },
+      "no_human": {
+        "system_success": 0.68,
+        "autonomous_success": 0.68,
+        "autonomous_answer_precision": 0.7513812154696132,
+        "autonomous_answer_coverage": 0.905,
+        "average_reward": 0.4309200000000004,
+        "average_tokens": 30.79,
+        "average_retrieval_calls": 0.65,
+        "average_tool_calls": 0.65,
+        "average_latency": 1.475,
+        "intervention_frequency": 0.0,
+        "average_steps": 2.3,
+        "success_by_category": {
+          "direct": 1.0,
+          "human": 0.0,
+          "retrieve": 0.9850746268656716,
+          "tool": 1.0
+        }
+      },
+      "direct_only": {
+        "system_success": 0.015,
+        "autonomous_success": 0.015,
+        "autonomous_answer_precision": 1.0,
+        "autonomous_answer_coverage": 0.015,
+        "average_reward": -0.2725399999999995,
+        "average_tokens": 15.645,
+        "average_retrieval_calls": 0.0,
+        "average_tool_calls": 0.0,
+        "average_latency": 0.5,
+        "intervention_frequency": 0.0,
+        "average_steps": 1.0,
+        "success_by_category": {
+          "direct": 1.0,
+          "human": 0.0,
+          "retrieve": 0.0,
+          "tool": 0.0
+        }
+      }
+    },
+    "11": {
+      "adaptive_rl": {
+        "system_success": 0.995,
+        "autonomous_success": 0.68,
+        "autonomous_answer_precision": 0.9927007299270073,
+        "autonomous_answer_coverage": 0.685,
+        "average_reward": 0.7276899999999996,
+        "average_tokens": 17.855,
+        "average_retrieval_calls": 0.335,
+        "average_tool_calls": 0.335,
+        "average_latency": 2.42,
+        "intervention_frequency": 0.315,
+        "average_steps": 1.67,
+        "success_by_category": {
+          "direct": 1.0,
+          "human": 1.0,
+          "retrieve": 0.9850746268656716,
+          "tool": 1.0
+        }
+      },
+      "confidence_rag": {
+        "system_success": 0.345,
+        "autonomous_success": 0.345,
+        "autonomous_answer_precision": 0.5609756097560976,
+        "autonomous_answer_coverage": 0.615,
+        "average_reward": -0.0012700000000000766,
+        "average_tokens": 37.01,
+        "average_retrieval_calls": 0.985,
+        "average_tool_calls": 0.0,
+        "average_latency": 1.485,
+        "intervention_frequency": 0.0,
+        "average_steps": 1.985,
+        "success_by_category": {
+          "direct": 1.0,
+          "human": 0.0,
+          "retrieve": 0.9850746268656716,
+          "tool": 0.0
+        }
+      },
+      "always_retrieve": {
+        "system_success": 0.345,
+        "autonomous_success": 0.345,
+        "autonomous_answer_precision": 0.5609756097560976,
+        "autonomous_answer_coverage": 0.615,
+        "average_reward": -0.003520000000000072,
+        "average_tokens": 37.385,
+        "average_retrieval_calls": 1.0,
+        "average_tool_calls": 0.0,
+        "average_latency": 1.5,
+        "intervention_frequency": 0.0,
+        "average_steps": 2.0,
+        "success_by_category": {
+          "direct": 1.0,
+          "human": 0.0,
+          "retrieve": 0.9850746268656716,
+          "tool": 0.0
+        }
+      },
+      "heuristic_router": {
+        "system_success": 0.995,
+        "autonomous_success": 0.68,
+        "autonomous_answer_precision": 0.9927007299270073,
+        "autonomous_answer_coverage": 0.685,
+        "average_reward": 0.7276899999999996,
+        "average_tokens": 17.855,
+        "average_retrieval_calls": 0.335,
+        "average_tool_calls": 0.335,
+        "average_latency": 2.42,
+        "intervention_frequency": 0.315,
+        "average_steps": 1.67,
+        "success_by_category": {
+          "direct": 1.0,
+          "human": 1.0,
+          "retrieve": 0.9850746268656716,
+          "tool": 1.0
+        }
+      },
+      "no_human": {
+        "system_success": 0.68,
+        "autonomous_success": 0.68,
+        "autonomous_answer_precision": 0.7513812154696132,
+        "autonomous_answer_coverage": 0.905,
+        "average_reward": 0.4309200000000004,
+        "average_tokens": 30.79,
+        "average_retrieval_calls": 0.65,
+        "average_tool_calls": 0.65,
+        "average_latency": 1.475,
+        "intervention_frequency": 0.0,
+        "average_steps": 2.3,
+        "success_by_category": {
+          "direct": 1.0,
+          "human": 0.0,
+          "retrieve": 0.9850746268656716,
+          "tool": 1.0
+        }
+      },
+      "direct_only": {
+        "system_success": 0.015,
+        "autonomous_success": 0.015,
+        "autonomous_answer_precision": 1.0,
+        "autonomous_answer_coverage": 0.015,
+        "average_reward": -0.2725399999999995,
+        "average_tokens": 15.645,
+        "average_retrieval_calls": 0.0,
+        "average_tool_calls": 0.0,
+        "average_latency": 0.5,
+        "intervention_frequency": 0.0,
+        "average_steps": 1.0,
+        "success_by_category": {
+          "direct": 1.0,
+          "human": 0.0,
+          "retrieve": 0.0,
+          "tool": 0.0
+        }
+      }
+    },
+    "13": {
+      "adaptive_rl": {
+        "system_success": 0.995,
+        "autonomous_success": 0.68,
+        "autonomous_answer_precision": 0.9927007299270073,
+        "autonomous_answer_coverage": 0.685,
+        "average_reward": 0.7276899999999996,
+        "average_tokens": 17.855,
+        "average_retrieval_calls": 0.335,
+        "average_tool_calls": 0.335,
+        "average_latency": 2.42,
+        "intervention_frequency": 0.315,
+        "average_steps": 1.67,
+        "success_by_category": {
+          "direct": 1.0,
+          "human": 1.0,
+          "retrieve": 0.9850746268656716,
+          "tool": 1.0
+        }
+      },
+      "confidence_rag": {
+        "system_success": 0.345,
+        "autonomous_success": 0.345,
+        "autonomous_answer_precision": 0.5609756097560976,
+        "autonomous_answer_coverage": 0.615,
+        "average_reward": -0.0012700000000000766,
+        "average_tokens": 37.01,
+        "average_retrieval_calls": 0.985,
+        "average_tool_calls": 0.0,
+        "average_latency": 1.485,
+        "intervention_frequency": 0.0,
+        "average_steps": 1.985,
+        "success_by_category": {
+          "direct": 1.0,
+          "human": 0.0,
+          "retrieve": 0.9850746268656716,
+          "tool": 0.0
+        }
+      },
+      "always_retrieve": {
+        "system_success": 0.345,
+        "autonomous_success": 0.345,
+        "autonomous_answer_precision": 0.5609756097560976,
+        "autonomous_answer_coverage": 0.615,
+        "average_reward": -0.003520000000000072,
+        "average_tokens": 37.385,
+        "average_retrieval_calls": 1.0,
+        "average_tool_calls": 0.0,
+        "average_latency": 1.5,
+        "intervention_frequency": 0.0,
+        "average_steps": 2.0,
+        "success_by_category": {
+          "direct": 1.0,
+          "human": 0.0,
+          "retrieve": 0.9850746268656716,
+          "tool": 0.0
+        }
+      },
+      "heuristic_router": {
+        "system_success": 0.995,
+        "autonomous_success": 0.68,
+        "autonomous_answer_precision": 0.9927007299270073,
+        "autonomous_answer_coverage": 0.685,
+        "average_reward": 0.7276899999999996,
+        "average_tokens": 17.855,
+        "average_retrieval_calls": 0.335,
+        "average_tool_calls": 0.335,
+        "average_latency": 2.42,
+        "intervention_frequency": 0.315,
+        "average_steps": 1.67,
+        "success_by_category": {
+          "direct": 1.0,
+          "human": 1.0,
+          "retrieve": 0.9850746268656716,
+          "tool": 1.0
+        }
+      },
+      "no_human": {
+        "system_success": 0.68,
+        "autonomous_success": 0.68,
+        "autonomous_answer_precision": 0.7513812154696132,
+        "autonomous_answer_coverage": 0.905,
+        "average_reward": 0.4309200000000004,
+        "average_tokens": 30.79,
+        "average_retrieval_calls": 0.65,
+        "average_tool_calls": 0.65,
+        "average_latency": 1.475,
+        "intervention_frequency": 0.0,
+        "average_steps": 2.3,
+        "success_by_category": {
+          "direct": 1.0,
+          "human": 0.0,
+          "retrieve": 0.9850746268656716,
+          "tool": 1.0
+        }
+      },
+      "direct_only": {
+        "system_success": 0.015,
+        "autonomous_success": 0.015,
+        "autonomous_answer_precision": 1.0,
+        "autonomous_answer_coverage": 0.015,
+        "average_reward": -0.2725399999999995,
+        "average_tokens": 15.645,
+        "average_retrieval_calls": 0.0,
+        "average_tool_calls": 0.0,
+        "average_latency": 0.5,
+        "intervention_frequency": 0.0,
+        "average_steps": 1.0,
+        "success_by_category": {
+          "direct": 1.0,
+          "human": 0.0,
+          "retrieve": 0.0,
+          "tool": 0.0
+        }
+      }
+    },
+    "17": {
+      "adaptive_rl": {
+        "system_success": 0.995,
+        "autonomous_success": 0.68,
+        "autonomous_answer_precision": 0.9927007299270073,
+        "autonomous_answer_coverage": 0.685,
+        "average_reward": 0.7276899999999996,
+        "average_tokens": 17.855,
+        "average_retrieval_calls": 0.335,
+        "average_tool_calls": 0.335,
+        "average_latency": 2.42,
+        "intervention_frequency": 0.315,
+        "average_steps": 1.67,
+        "success_by_category": {
+          "direct": 1.0,
+          "human": 1.0,
+          "retrieve": 0.9850746268656716,
+          "tool": 1.0
+        }
+      },
+      "confidence_rag": {
+        "system_success": 0.345,
+        "autonomous_success": 0.345,
+        "autonomous_answer_precision": 0.5609756097560976,
+        "autonomous_answer_coverage": 0.615,
+        "average_reward": -0.0012700000000000766,
+        "average_tokens": 37.01,
+        "average_retrieval_calls": 0.985,
+        "average_tool_calls": 0.0,
+        "average_latency": 1.485,
+        "intervention_frequency": 0.0,
+        "average_steps": 1.985,
+        "success_by_category": {
+          "direct": 1.0,
+          "human": 0.0,
+          "retrieve": 0.9850746268656716,
+          "tool": 0.0
+        }
+      },
+      "always_retrieve": {
+        "system_success": 0.345,
+        "autonomous_success": 0.345,
+        "autonomous_answer_precision": 0.5609756097560976,
+        "autonomous_answer_coverage": 0.615,
+        "average_reward": -0.003520000000000072,
+        "average_tokens": 37.385,
+        "average_retrieval_calls": 1.0,
+        "average_tool_calls": 0.0,
+        "average_latency": 1.5,
+        "intervention_frequency": 0.0,
+        "average_steps": 2.0,
+        "success_by_category": {
+          "direct": 1.0,
+          "human": 0.0,
+          "retrieve": 0.9850746268656716,
+          "tool": 0.0
+        }
+      },
+      "heuristic_router": {
+        "system_success": 0.995,
+        "autonomous_success": 0.68,
+        "autonomous_answer_precision": 0.9927007299270073,
+        "autonomous_answer_coverage": 0.685,
+        "average_reward": 0.7276899999999996,
+        "average_tokens": 17.855,
+        "average_retrieval_calls": 0.335,
+        "average_tool_calls": 0.335,
+        "average_latency": 2.42,
+        "intervention_frequency": 0.315,
+        "average_steps": 1.67,
+        "success_by_category": {
+          "direct": 1.0,
+          "human": 1.0,
+          "retrieve": 0.9850746268656716,
+          "tool": 1.0
+        }
+      },
+      "no_human": {
+        "system_success": 0.68,
+        "autonomous_success": 0.68,
+        "autonomous_answer_precision": 0.7513812154696132,
+        "autonomous_answer_coverage": 0.905,
+        "average_reward": 0.4309200000000004,
+        "average_tokens": 30.79,
+        "average_retrieval_calls": 0.65,
+        "average_tool_calls": 0.65,
+        "average_latency": 1.475,
+        "intervention_frequency": 0.0,
+        "average_steps": 2.3,
+        "success_by_category": {
+          "direct": 1.0,
+          "human": 0.0,
+          "retrieve": 0.9850746268656716,
+          "tool": 1.0
+        }
+      },
+      "direct_only": {
+        "system_success": 0.015,
+        "autonomous_success": 0.015,
+        "autonomous_answer_precision": 1.0,
+        "autonomous_answer_coverage": 0.015,
+        "average_reward": -0.2725399999999995,
+        "average_tokens": 15.645,
+        "average_retrieval_calls": 0.0,
+        "average_tool_calls": 0.0,
+        "average_latency": 0.5,
+        "intervention_frequency": 0.0,
+        "average_steps": 1.0,
+        "success_by_category": {
+          "direct": 1.0,
+          "human": 0.0,
+          "retrieve": 0.0,
+          "tool": 0.0
+        }
+      }
+    },
+    "19": {
+      "adaptive_rl": {
+        "system_success": 0.995,
+        "autonomous_success": 0.68,
+        "autonomous_answer_precision": 0.9927007299270073,
+        "autonomous_answer_coverage": 0.685,
+        "average_reward": 0.7276899999999996,
+        "average_tokens": 17.855,
+        "average_retrieval_calls": 0.335,
+        "average_tool_calls": 0.335,
+        "average_latency": 2.42,
+        "intervention_frequency": 0.315,
+        "average_steps": 1.67,
+        "success_by_category": {
+          "direct": 1.0,
+          "human": 1.0,
+          "retrieve": 0.9850746268656716,
+          "tool": 1.0
+        }
+      },
+      "confidence_rag": {
+        "system_success": 0.345,
+        "autonomous_success": 0.345,
+        "autonomous_answer_precision": 0.5609756097560976,
+        "autonomous_answer_coverage": 0.615,
+        "average_reward": -0.0012700000000000766,
+        "average_tokens": 37.01,
+        "average_retrieval_calls": 0.985,
+        "average_tool_calls": 0.0,
+        "average_latency": 1.485,
+        "intervention_frequency": 0.0,
+        "average_steps": 1.985,
+        "success_by_category": {
+          "direct": 1.0,
+          "human": 0.0,
+          "retrieve": 0.9850746268656716,
+          "tool": 0.0
+        }
+      },
+      "always_retrieve": {
+        "system_success": 0.345,
+        "autonomous_success": 0.345,
+        "autonomous_answer_precision": 0.5609756097560976,
+        "autonomous_answer_coverage": 0.615,
+        "average_reward": -0.003520000000000072,
+        "average_tokens": 37.385,
+        "average_retrieval_calls": 1.0,
+        "average_tool_calls": 0.0,
+        "average_latency": 1.5,
+        "intervention_frequency": 0.0,
+        "average_steps": 2.0,
+        "success_by_category": {
+          "direct": 1.0,
+          "human": 0.0,
+          "retrieve": 0.9850746268656716,
+          "tool": 0.0
+        }
+      },
+      "heuristic_router": {
+        "system_success": 0.995,
+        "autonomous_success": 0.68,
+        "autonomous_answer_precision": 0.9927007299270073,
+        "autonomous_answer_coverage": 0.685,
+        "average_reward": 0.7276899999999996,
+        "average_tokens": 17.855,
+        "average_retrieval_calls": 0.335,
+        "average_tool_calls": 0.335,
+        "average_latency": 2.42,
+        "intervention_frequency": 0.315,
+        "average_steps": 1.67,
+        "success_by_category": {
+          "direct": 1.0,
+          "human": 1.0,
+          "retrieve": 0.9850746268656716,
+          "tool": 1.0
+        }
+      },
+      "no_human": {
+        "system_success": 0.68,
+        "autonomous_success": 0.68,
+        "autonomous_answer_precision": 0.7513812154696132,
+        "autonomous_answer_coverage": 0.905,
+        "average_reward": 0.4309200000000004,
+        "average_tokens": 30.79,
+        "average_retrieval_calls": 0.65,
+        "average_tool_calls": 0.65,
+        "average_latency": 1.475,
+        "intervention_frequency": 0.0,
+        "average_steps": 2.3,
+        "success_by_category": {
+          "direct": 1.0,
+          "human": 0.0,
+          "retrieve": 0.9850746268656716,
+          "tool": 1.0
+        }
+      },
+      "direct_only": {
+        "system_success": 0.015,
+        "autonomous_success": 0.015,
+        "autonomous_answer_precision": 1.0,
+        "autonomous_answer_coverage": 0.015,
+        "average_reward": -0.2725399999999995,
+        "average_tokens": 15.645,
+        "average_retrieval_calls": 0.0,
+        "average_tool_calls": 0.0,
+        "average_latency": 0.5,
+        "intervention_frequency": 0.0,
+        "average_steps": 1.0,
+        "success_by_category": {
+          "direct": 1.0,
+          "human": 0.0,
+          "retrieve": 0.0,
+          "tool": 0.0
+        }
+      }
+    }
+  }
+}

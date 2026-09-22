@@ -28,15 +28,15 @@ def test_metrics_separate_system_success_from_autonomous_success() -> None:
     tasks = [task for task in load_tasks() if task.split == "test"]
     metrics, _ = evaluate_policy("heuristic", heuristic_routing_policy(), tasks, factory())
 
-    assert metrics.system_success == 1.0
-    assert metrics.autonomous_success == 0.75
-    assert metrics.autonomous_answer_precision == 1.0
-    assert metrics.autonomous_answer_coverage == 0.75
-    assert metrics.intervention_frequency == 0.25
+    assert metrics.system_success == 199 / 200
+    assert metrics.autonomous_success == 136 / 200
+    assert metrics.autonomous_answer_precision == 136 / 137
+    assert metrics.autonomous_answer_coverage == 137 / 200
+    assert metrics.intervention_frequency == 63 / 200
     assert metrics.success_by_category == {
         "direct": 1.0,
         "human": 1.0,
-        "retrieve": 1.0,
+        "retrieve": 66 / 67,
         "tool": 1.0,
     }
 
@@ -45,10 +45,10 @@ def test_direct_only_reports_precision_alongside_coverage() -> None:
     tasks = [task for task in load_tasks() if task.split == "test"]
     metrics, _ = evaluate_policy("direct", direct_only_policy(), tasks, factory())
 
-    assert metrics.system_success == 0.25
-    assert metrics.autonomous_success == 0.25
+    assert metrics.system_success == 3 / 200
+    assert metrics.autonomous_success == 3 / 200
     assert metrics.autonomous_answer_precision == 1.0
-    assert metrics.autonomous_answer_coverage == 0.25
+    assert metrics.autonomous_answer_coverage == 3 / 200
     assert metrics.intervention_frequency == 0.0
 
 

@@ -30,7 +30,7 @@ class q_network(nn.Module):
 
 
 class training_config(immutable_record):
-    episodes: int = 600
+    episodes: int = 3000
     batch_size: int = 32
     replay_capacity: int = 4_000
     gamma: float = 0.95
@@ -54,7 +54,7 @@ class training_config(immutable_record):
 
     def __init__(
         self,
-        episodes: int = 600,
+        episodes: int = 3000,
         batch_size: int = 32,
         replay_capacity: int = 4_000,
         gamma: float = 0.95,

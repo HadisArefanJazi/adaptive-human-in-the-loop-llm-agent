@@ -80,7 +80,7 @@ def test_configuration_exports_are_detached_and_include_nested_reward_values():
     config = experiment_config(reward=reward_config_type(tool_cost=0.1))
     payload = config.as_dict()
     assert payload == {
-        "training_episodes": 600, "seed": 7, "max_steps": 3, "retrieval_top_k": 2,
+        "training_episodes": 3000, "seed": 7, "max_steps": 3, "retrieval_top_k": 2,
         "reward": {
             "success_reward": 1.0, "failure_penalty": -0.25, "token_cost": 0.002,
             "retrieval_cost": 0.08, "tool_cost": 0.1, "human_cost": 0.45,

@@ -55,30 +55,34 @@ def test_experiment_evaluates_all_comparison_policies() -> None:
         "no_human",
         "direct_only",
     } == set(result.metrics)
-    assert len(result.traces) == 12 * 6
+    assert len(result.traces) == 200 * 6
 
 
 def test_seed7_benchmark_is_reproducible() -> None:
-    result = run_experiment(experiment_config(training_episodes=600, seed=7))
+    result = run_experiment(experiment_config(training_episodes=3000, seed=7))
     adaptive = result.metrics["adaptive_rl"]
 
-    assert adaptive.system_success == 1.0
-    assert adaptive.autonomous_success == 0.75
-    assert adaptive.intervention_frequency == 0.25
+    assert adaptive.system_success == 199 / 200
+    assert adaptive.autonomous_success == 136 / 200
+    assert adaptive.intervention_frequency == 63 / 200
 
 
-def test_bundled_dataset_is_balanced_and_held_out() -> None:
+def test_bundled_dataset_has_requested_sizes_and_is_held_out() -> None:
     tasks = load_tasks()
     assert len({task.task_id for task in tasks}) == len(tasks)
     assert len({task.question.casefold().strip() for task in tasks}) == len(tasks)
-    for split, expected in (("train", 5), ("test", 3)):
+    expected_counts = {
+        "train": {"direct": 5, "retrieve": 155, "tool": 185, "human": 155},
+        "test": {"direct": 3, "retrieve": 67, "tool": 67, "human": 63},
+    }
+    for split, expected in expected_counts.items():
         counts: dict[str, int] = {}
         for task in tasks:
             if task.split == split:
                 counts[task.category] = counts.get(task.category, 0) + 1
-        assert counts == {
-            route: expected for route in ("direct", "retrieve", "tool", "human")
-        }
+        assert counts == expected
+    assert sum(expected_counts["train"].values()) == 500
+    assert sum(expected_counts["test"].values()) == 200
 
 
 def test_experiment_records_runtime_and_data_provenance() -> None:

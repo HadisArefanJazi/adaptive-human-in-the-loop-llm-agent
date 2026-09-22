@@ -1,0 +1,167 @@
+{
+  "schema_version": 1,
+  "metadata": {
+    "package_version": "0.2.0",
+    "platform": "macOS-14.2.1-arm64-arm-64bit",
+    "machine": "arm64",
+    "training_device": "cpu",
+    "python_version": "3.11.4",
+    "torch_version": "2.14.0",
+    "language_model": "rule_based_language_model",
+    "model_name": null,
+    "human_reviewer": "oracle_human_reviewer",
+    "train_tasks": 500,
+    "test_tasks": 200,
+    "data_sha256": {
+      "tasks.jsonl": "541e35ff1a64461d8b84cabe77cbaff10dfc734cd56a4e07f81736e17336834a",
+      "knowledge_base.json": "0e61f2e974e90b1dbc9814ca667db13ab5e0a0e444fee3244921064149a2c91f"
+    }
+  },
+  "config": {
+    "training_episodes": 3000,
+    "seed": 7,
+    "max_steps": 3,
+    "retrieval_top_k": 2,
+    "reward": {
+      "success_reward": 1.0,
+      "failure_penalty": -0.25,
+      "token_cost": 0.002,
+      "retrieval_cost": 0.08,
+      "tool_cost": 0.04,
+      "human_cost": 0.45,
+      "latency_cost": 0.02
+    }
+  },
+  "metrics": {
+    "adaptive_rl": {
+      "system_success": 0.995,
+      "autonomous_success": 0.68,
+      "autonomous_answer_precision": 0.9927007299270073,
+      "autonomous_answer_coverage": 0.685,
+      "average_reward": 0.7276899999999996,
+      "average_tokens": 17.855,
+      "average_retrieval_calls": 0.335,
+      "average_tool_calls": 0.335,
+      "average_latency": 2.42,
+      "intervention_frequency": 0.315,
+      "average_steps": 1.67,
+      "success_by_category": {
+        "direct": 1.0,
+        "human": 1.0,
+        "retrieve": 0.9850746268656716,
+        "tool": 1.0
+      }
+    },
+    "confidence_rag": {
+      "system_success": 0.345,
+      "autonomous_success": 0.345,
+      "autonomous_answer_precision": 0.5609756097560976,
+      "autonomous_answer_coverage": 0.615,
+      "average_reward": -0.0012700000000000766,
+      "average_tokens": 37.01,
+      "average_retrieval_calls": 0.985,
+      "average_tool_calls": 0.0,
+      "average_latency": 1.485,
+      "intervention_frequency": 0.0,
+      "average_steps": 1.985,
+      "success_by_category": {
+        "direct": 1.0,
+        "human": 0.0,
+        "retrieve": 0.9850746268656716,
+        "tool": 0.0
+      }
+    },
+    "always_retrieve": {
+      "system_success": 0.345,
+      "autonomous_success": 0.345,
+      "autonomous_answer_precision": 0.5609756097560976,
+      "autonomous_answer_coverage": 0.615,
+      "average_reward": -0.003520000000000072,
+      "average_tokens": 37.385,
+      "average_retrieval_calls": 1.0,
+      "average_tool_calls": 0.0,
+      "average_latency": 1.5,
+      "intervention_frequency": 0.0,
+      "average_steps": 2.0,
+      "success_by_category": {
+        "direct": 1.0,
+        "human": 0.0,
+        "retrieve": 0.9850746268656716,
+        "tool": 0.0
+      }
+    },
+    "heuristic_router": {
+      "system_success": 0.995,
+      "autonomous_success": 0.68,
+      "autonomous_answer_precision": 0.9927007299270073,
+      "autonomous_answer_coverage": 0.685,
+      "average_reward": 0.7276899999999996,
+      "average_tokens": 17.855,
+      "average_retrieval_calls": 0.335,
+      "average_tool_calls": 0.335,
+      "average_latency": 2.42,
+      "intervention_frequency": 0.315,
+      "average_steps": 1.67,
+      "success_by_category": {
+        "direct": 1.0,
+        "human": 1.0,
+        "retrieve": 0.9850746268656716,
+        "tool": 1.0
+      }
+    },
+    "no_human": {
+      "system_success": 0.68,
+      "autonomous_success": 0.68,
+      "autonomous_answer_precision": 0.7513812154696132,
+      "autonomous_answer_coverage": 0.905,
+      "average_reward": 0.4309200000000004,
+      "average_tokens": 30.79,
+      "average_retrieval_calls": 0.65,
+      "average_tool_calls": 0.65,
+      "average_latency": 1.475,
+      "intervention_frequency": 0.0,
+      "average_steps": 2.3,
+      "success_by_category": {
+        "direct": 1.0,
+        "human": 0.0,
+        "retrieve": 0.9850746268656716,
+        "tool": 1.0
+      }
+    },
+    "direct_only": {
+      "system_success": 0.015,
+      "autonomous_success": 0.015,
+      "autonomous_answer_precision": 1.0,
+      "autonomous_answer_coverage": 0.015,
+      "average_reward": -0.2725399999999995,
+      "average_tokens": 15.645,
+      "average_retrieval_calls": 0.0,
+      "average_tool_calls": 0.0,
+      "average_latency": 0.5,
+      "intervention_frequency": 0.0,
+      "average_steps": 1.0,
+      "success_by_category": {
+        "direct": 1.0,
+        "human": 0.0,
+        "retrieve": 0.0,
+        "tool": 0.0
+      }
+    }
+  },
+  "training": {
+    "config": {
+      "episodes": 3000,
+      "batch_size": 32,
+      "replay_capacity": 4000,
+      "gamma": 0.95,
+      "learning_rate": 0.002,
+      "epsilon_start": 0.9,
+      "epsilon_end": 0.05,
+      "target_update_interval": 40,
+      "seed": 7
+    },
+    "episodes": 3000,
+    "mean_last_50_reward": 0.7170000000000003,
+    "final_loss": 1.4743806787009817e-05
+  }
+}

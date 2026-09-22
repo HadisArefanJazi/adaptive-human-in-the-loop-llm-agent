@@ -17,7 +17,7 @@ def main() -> None:
         "--reference-seed", type=int, default=7,
         help="seed whose full metrics are also exported (default: 7, if included).",
     )
-    parser.add_argument("--episodes", type=int, default=600)
+    parser.add_argument("--episodes", type=int, default=3000)
     parser.add_argument("--output-dir", type=path_type, default=path_type("results"))
     parser.add_argument("--artifacts-dir", type=path_type, default=path_type("artifacts/benchmark"))
     args = parser.parse_args()

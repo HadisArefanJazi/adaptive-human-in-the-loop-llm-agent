@@ -23,7 +23,7 @@ def build_parser() -> argparse.ArgumentParser:
     commands = parser.add_subparsers(dest="command", required=True)
 
     experiment = commands.add_parser("experiment")
-    experiment.add_argument("--episodes", type=int, default=600)
+    experiment.add_argument("--episodes", type=int, default=3000)
     experiment.add_argument("--seed", type=int, default=7)
     experiment.add_argument("--output-dir", default="artifacts/latest")
 

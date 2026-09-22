@@ -5,7 +5,7 @@ from adaptive_hitl_agent.cli import build_parser, main
 
 def test_parser_exposes_experiment_defaults() -> None:
     args = build_parser().parse_args(["experiment"])
-    assert args.episodes == 600
+    assert args.episodes == 3000
     assert args.seed == 7
     assert args.output_dir == "artifacts/latest"
 
