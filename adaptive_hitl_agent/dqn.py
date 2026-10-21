@@ -1,17 +1,28 @@
+"""DQN network, replay buffer, training, and checkpoint handling."""
+
 from __future__ import annotations
 
 import math
 import random
 from collections import deque
+from dataclasses import asdict, dataclass
 from pathlib import Path as path_type
-from typing import Callable as callable_type, Iterable as iterable, Sequence as sequence
+from typing import (
+    Callable as callable_type,
+    Iterable as iterable,
+    Sequence as sequence,
+)
 
 import torch
 from torch import nn
 
-from .records import immutable_record
-from .environment import assistance_environment, feature_names
-from .types import action_type, observation_record, task_record
+from .core import (
+    action_type,
+    assistance_environment,
+    feature_names,
+    observation_record,
+    task_record,
+)
 
 
 class q_network(nn.Module):
@@ -29,7 +40,8 @@ class q_network(nn.Module):
         return self.layers(state)
 
 
-class training_config(immutable_record):
+@dataclass(frozen=True)
+class training_config:
     episodes: int = 3000
     batch_size: int = 32
     replay_capacity: int = 4_000
@@ -40,55 +52,10 @@ class training_config(immutable_record):
     target_update_interval: int = 40
     seed: int = 7
 
-    __match_args__ = (
-        "episodes",
-        "batch_size",
-        "replay_capacity",
-        "gamma",
-        "learning_rate",
-        "epsilon_start",
-        "epsilon_end",
-        "target_update_interval",
-        "seed",
-    )
-
-    def __init__(
-        self,
-        episodes: int = 3000,
-        batch_size: int = 32,
-        replay_capacity: int = 4_000,
-        gamma: float = 0.95,
-        learning_rate: float = 0.002,
-        epsilon_start: float = 0.9,
-        epsilon_end: float = 0.05,
-        target_update_interval: int = 40,
-        seed: int = 7,
-    ) -> None:
-        object.__setattr__(self, "episodes", episodes)
-        object.__setattr__(self, "batch_size", batch_size)
-        object.__setattr__(self, "replay_capacity", replay_capacity)
-        object.__setattr__(self, "gamma", gamma)
-        object.__setattr__(self, "learning_rate", learning_rate)
-        object.__setattr__(self, "epsilon_start", epsilon_start)
-        object.__setattr__(self, "epsilon_end", epsilon_end)
-        object.__setattr__(self, "target_update_interval", target_update_interval)
-        object.__setattr__(self, "seed", seed)
-        self._validate()
-
     def as_dict(self) -> dict[str, object]:
-        return {
-            "episodes": self.episodes,
-            "batch_size": self.batch_size,
-            "replay_capacity": self.replay_capacity,
-            "gamma": self.gamma,
-            "learning_rate": self.learning_rate,
-            "epsilon_start": self.epsilon_start,
-            "epsilon_end": self.epsilon_end,
-            "target_update_interval": self.target_update_interval,
-            "seed": self.seed,
-        }
+        return asdict(self)
 
-    def _validate(self) -> None:
+    def __post_init__(self) -> None:
         if self.episodes < 1:
             raise ValueError("episodes must be at least 1")
         if self.batch_size < 1:
@@ -105,38 +72,14 @@ class training_config(immutable_record):
             raise ValueError("target_update_interval must be at least 1")
 
 
-class transition_record(immutable_record):
+@dataclass(frozen=True)
+class transition_record:
     state: tuple[float, ...]
     action: int
     reward: float
     next_state: tuple[float, ...]
     next_mask: tuple[bool, ...]
     done: bool
-
-    __match_args__ = (
-        "state",
-        "action",
-        "reward",
-        "next_state",
-        "next_mask",
-        "done",
-    )
-
-    def __init__(
-        self,
-        state: tuple[float, ...],
-        action: int,
-        reward: float,
-        next_state: tuple[float, ...],
-        next_mask: tuple[bool, ...],
-        done: bool,
-    ) -> None:
-        object.__setattr__(self, "state", state)
-        object.__setattr__(self, "action", action)
-        object.__setattr__(self, "reward", reward)
-        object.__setattr__(self, "next_state", next_state)
-        object.__setattr__(self, "next_mask", next_mask)
-        object.__setattr__(self, "done", done)
 
 
 class replay_buffer:
@@ -150,7 +93,9 @@ class replay_buffer:
 
     def sample(self, size: int, rng: random.Random) -> list[transition_record]:
         if size < 1 or size > len(self._items):
-            raise ValueError("sample size must be between 1 and the replay buffer length")
+            raise ValueError(
+                "sample size must be between 1 and the replay buffer length"
+            )
         return rng.sample(list(self._items), size)
 
     def __len__(self) -> int:
@@ -214,7 +159,9 @@ class dqn_policy:
             or tuple(name.lower() for name in saved_action_names)
             != tuple(action.name for action in action_type)
         ):
-            raise ValueError("checkpoint feature or action schema does not match this policy")
+            raise ValueError(
+                "checkpoint feature or action schema does not match this policy"
+            )
         policy = cls()
         policy.network.load_state_dict(checkpoint["state_dict"])
         policy.network.eval()
@@ -259,30 +206,12 @@ def _optimize(
     return float(loss.item())
 
 
-class training_result(immutable_record):
+@dataclass(frozen=True)
+class training_result:
     policy: dqn_policy
     episode_rewards: tuple[float, ...]
     losses: tuple[float, ...]
     config: training_config
-
-    __match_args__ = (
-        "policy",
-        "episode_rewards",
-        "losses",
-        "config",
-    )
-
-    def __init__(
-        self,
-        policy: dqn_policy,
-        episode_rewards: tuple[float, ...],
-        losses: tuple[float, ...],
-        config: training_config,
-    ) -> None:
-        object.__setattr__(self, "policy", policy)
-        object.__setattr__(self, "episode_rewards", episode_rewards)
-        object.__setattr__(self, "losses", losses)
-        object.__setattr__(self, "config", config)
 
 
 def train_dqn(

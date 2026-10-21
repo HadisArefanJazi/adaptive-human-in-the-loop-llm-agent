@@ -205,24 +205,28 @@ artifacts/latest/
 
 ```text
 adaptive_hitl_agent/
-├── types.py          # shared data structures
-├── records.py        # record comparison, display, and mutation rules
-├── environment.py    # state, actions, rewards, episode logic
-├── dqn.py            # dqn policy and training
-├── baselines.py      # comparison routing policies
-├── retrieval.py      # bm25 retrieval
-├── tools.py          # safe calculator
-├── llm.py            # language-model interfaces
-├── human.py          # human-review interface
-├── evaluation.py     # evaluation metrics
-├── experiment.py     # experiment orchestration
-├── cli.py            # command-line interface
+├── core.py           # records, resources, state, actions and rewards
+├── dqn.py            # dqn network, replay, training and checkpoints
+├── evaluate.py       # baselines, metrics, experiments and artifacts
+├── main.py           # command-line interface
+├── __init__.py       # public api and compatibility imports
+├── __main__.py       # python -m entry point
 └── data/             # benchmark tasks and documents
 
 tests/
 scripts/
 results/
 ```
+
+The implementation is organized into four modules. Records use Python's built-in
+`dataclasses`; PyTorch is the only required third-party dependency. `transformers`
+is optional and is imported only when creating the Hugging Face adapter.
+
+Existing imports from `types`, `retrieval`, `tools`, `llm`, `human`, `baselines`,
+`environment`, `evaluation`, `experiment`, and `cli` remain available as
+compatibility aliases. New code can import these objects from `core`, `dqn`,
+`evaluate`, and `main`. The command-line entry
+points and DQN checkpoint format are unchanged.
 
 ## Benchmark
 
@@ -260,8 +264,8 @@ python -m pip install -e ".[hf]"
 example:
 
 ```python
-from adaptive_hitl_agent.experiment import run_experiment
-from adaptive_hitl_agent.llm import hugging_face_language_model
+from adaptive_hitl_agent.evaluate import run_experiment
+from adaptive_hitl_agent.core import hugging_face_language_model
 
 model = hugging_face_language_model(
     model_name="Qwen/Qwen2.5-0.5B-Instruct",

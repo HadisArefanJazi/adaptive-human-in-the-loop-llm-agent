@@ -7,7 +7,7 @@ import shutil
 from pathlib import Path as path_type
 from statistics import mean, stdev
 
-from adaptive_hitl_agent.experiment import experiment_config, run_experiment
+from adaptive_hitl_agent.evaluate import experiment_config, run_experiment
 
 
 def main() -> None:

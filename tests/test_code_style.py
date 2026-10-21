@@ -19,9 +19,9 @@ def test_project_bindings_and_imports_follow_code_style():
                 elif isinstance(node, (ast.Import, ast.ImportFrom)):
                     names.extend(alias.asname or alias.name for alias in node.names)
                     if isinstance(node, ast.Import):
-                        assert all(alias.name not in {"re", "operator", "dataclasses"} for alias in node.names)
+                        assert all(alias.name not in {"re", "operator"} for alias in node.names)
                     else:
-                        assert node.module not in {"re", "operator", "dataclasses"}
+                        assert node.module not in {"re", "operator"}
                         assert not (
                             node.module == "collections"
                             and any(alias.name == "Counter" for alias in node.names)

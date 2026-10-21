@@ -4,13 +4,14 @@ import argparse
 from pathlib import Path as path_type
 
 from .dqn import dqn_policy
-from .environment import assistance_environment
-from .evaluation import format_metrics
-from .experiment import experiment_config, run_experiment
-from .llm import rule_based_language_model
-from .retrieval import bm25_retriever
-from .tools import safe_calculator
-from .types import task_record
+from .core import assistance_environment
+from .evaluate import experiment_config, format_metrics, run_experiment
+from .core import (
+    bm25_retriever,
+    rule_based_language_model,
+    safe_calculator,
+    task_record,
+)
 
 
 class terminal_human_reviewer:
@@ -77,15 +78,19 @@ def ask_question(question: str, policy_path: str) -> None:
 
 
 def main() -> None:
-    args = build_parser().parse_args()
+    parser = build_parser()
+    args = parser.parse_args()
 
     if args.command == "experiment":
+        if args.episodes < 1:
+            parser.error("episodes must be positive")
         config = experiment_config(
             training_episodes=args.episodes,
             seed=args.seed,
         )
         result = run_experiment(config, args.output_dir)
         print(format_metrics(result.metrics))
+        print(f"artifacts written to {args.output_dir}")
 
     elif args.command == "ask":
         ask_question(args.question, args.policy)
