@@ -282,7 +282,7 @@ run_experiment(
 
 This project is a proof of concept, and several parts of the environment are heuristic or manually defined.
 
-In a future version, I would replace these simplified parts with more realistic data and models, and use **LangGraph** to organize the multi-step workflow.
+In future work, I would replace these simplified parts with more realistic data and models, use **LangGraph** to organize the multi-step workflow, and investigate **PPO as an alternative to DQN**, comparing their performance in terms of decision accuracy, resource cost, and training efficiency.
 
 ## License
 
