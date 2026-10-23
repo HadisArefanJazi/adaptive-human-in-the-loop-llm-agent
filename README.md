@@ -280,9 +280,10 @@ run_experiment(
 
 ## Limitations and Future Work
 
-This project is a proof of concept, and several parts of the environment are heuristic or manually defined.
+This project is a proof of concept using seven manually designed state features, a rule-based language model, and simulated human feedback.
+In future work, I plan to integrate a real LLM, extend the agent to multi-turn interactions that learn both when to ask for clarification and what to ask, and evaluate it on realistic tasks with actual human feedback.
 
-In future work, I would replace these simplified parts with more realistic data and models, use **LangGraph** to organize the multi-step workflow, and investigate **PPO as an alternative to DQN**, comparing their performance in terms of decision accuracy, resource cost, and training efficiency.
+I will also explore PPO for fine-tuning the LLM and compare the resulting system against the current DQN-based approach in terms of task success, resource cost, and training efficiency.
 
 ## License
 
